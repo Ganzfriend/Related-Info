@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { hot } from 'react-hot-loader/root';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Places from './Places';
 const axios = require('axios');
 
-const App = (props) => {
+const App = () => {
 
   // seattle won't be the default once everything is set up, just for now
   const [city, setCity] = useState('seattle');
@@ -24,7 +24,7 @@ const App = (props) => {
   const getCityData = () => {
     axios.get(`http://localhost:3000/${city}`)
     .then(response => {
-      setCity(response.data);
+      setCity(response.data[0]);
     })
     .catch(err => console.log(err));
   };
@@ -37,8 +37,13 @@ const App = (props) => {
       <h1>
         React is running! Let's get started!
       </h1>
-      <Places />
-      <Button variant="contained">this is a material UI button</Button>
+      { data ?
+      <div>
+        <Places homes={data.homes}/>
+      </div>
+      :
+      <p>Loading...</p>
+      }
     </div>
   );
 };

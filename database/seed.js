@@ -10,6 +10,7 @@ const sampleCities = [
   data: {
     homes:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/skUTVJi8-jc",
       reviews: 8,
       type: "Private room",
@@ -24,6 +25,7 @@ const sampleCities = [
 
     activities:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/16ziVZtz8vA",
       reviews: 12,
       description: "An afternoon at the market: Come experience Pike's Place!",
@@ -34,8 +36,9 @@ const sampleCities = [
 
     nearbyCities:
     [ {
-        name: "Olympia, WA",
-        url: "https://www.google.com"
+      id: 1,
+      name: "Olympia, WA",
+      url: "https://www.google.com"
     } ]
   } },
 
@@ -43,6 +46,7 @@ const sampleCities = [
   data: {
     homes:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/ezRKQQPWJOw",
       reviews: 8,
       type: "Entire house",
@@ -57,6 +61,7 @@ const sampleCities = [
 
     activities:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/JDSjHhdgpZY",
       reviews: 1,
       description: "Come check out this brown wooden dock. A favorite of Oakland locals!",
@@ -67,8 +72,9 @@ const sampleCities = [
 
     nearbyCities:
     [ {
-        name: "San Jose, CA",
-        url: "https://www.google.com"
+      id: 1,
+      name: "San Jose, CA",
+      url: "https://www.google.com"
       },
       {
         name: "San Francisco, CA",
@@ -81,6 +87,7 @@ const sampleCities = [
   data: {
     homes:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/To7GxHUMq6g",
       reviews: 8,
       type: "Shared room",
@@ -95,6 +102,7 @@ const sampleCities = [
 
     activities:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/8LlJNFLTEm0",
       reviews: 25,
       description: "Celebrities nowhere. Tourists everywhere. You're gonna love this tour!",
@@ -105,20 +113,24 @@ const sampleCities = [
 
     nearbyCities:
     [ {
-        name: "Santa Monica, CA",
-        url: "https://www.google.com"
+      id: 1,
+      name: "Santa Monica, CA",
+      url: "https://www.google.com"
       },
       {
-        name: "Los Angeles, CA",
-        url: "https://www.google.com"
+      id: 2,
+      name: "Los Angeles, CA",
+      url: "https://www.google.com"
       },
       {
-        name: "Pasadena, CA",
-        url: "https://www.google.com"
+      id: 3,
+      name: "Pasadena, CA",
+      url: "https://www.google.com"
       },
       {
-        name: "El Segundo, CA",
-        url: "https://www.google.com"
+      id: 4,
+      name: "El Segundo, CA",
+      url: "https://www.google.com"
       }
     ]
   } },
@@ -127,6 +139,7 @@ const sampleCities = [
   data: {
     homes:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/E9Udq-cPVXs",
       reviews: 0,
       type: "Living room only",
@@ -141,6 +154,7 @@ const sampleCities = [
 
     activities:
     [ {
+      id: 1,
       image: "https://unsplash.com/photos/HFbzqwfnrsE",
       reviews: 68,
       description: "Paddleboarding lessons! Just don't fall in!",
@@ -151,12 +165,14 @@ const sampleCities = [
 
     nearbyCities:
     [ {
-        name: "Jollyville, TX",
-        url: "https://www.google.com"
+      id: 1,
+      name: "Jollyville, TX",
+      url: "https://www.google.com"
       },
       {
-        name: "Round Rock, TX",
-        url: "https://www.google.com"
+      id: 2,
+      name: "Round Rock, TX",
+      url: "https://www.google.com"
       }
     ]
   } }
