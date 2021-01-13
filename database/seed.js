@@ -1,6 +1,8 @@
 // this will be where the dummy data goes, to seed db
 // "npm run seed" to make it happen
 
+// stretch goal => add url prop to all homes, sending to that home's endpoint & rendering in main component
+
 const City = require('./index.js');
 
 const sampleCities = [
@@ -16,7 +18,8 @@ const sampleCities = [
       price: 65,
       superhost: true,
       liked: true,
-      location: "Auburn, WA"
+      location: "Auburn, WA",
+      url: "https://www.google.com"
     } ] ,
 
     activities:
@@ -48,7 +51,8 @@ const sampleCities = [
       price: 235,
       superhost: false,
       liked: false,
-      location: "Oakland, CA"
+      location: "Oakland, CA",
+      url: "https://www.google.com"
     } ] ,
 
     activities:
@@ -85,7 +89,8 @@ const sampleCities = [
       price: 115,
       superhost: false,
       liked: true,
-      location: "Studio City, CA"
+      location: "Studio City, CA",
+      url: "https://www.google.com"
     } ] ,
 
     activities:
@@ -130,7 +135,8 @@ const sampleCities = [
       price: 18,
       superhost: false,
       liked: false,
-      location: "Taylor, TX"
+      location: "Taylor, TX",
+      url: "https://www.google.com"
     } ] ,
 
     activities:
