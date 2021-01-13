@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const PORT = 3000;
-// const cors = require('cors');
+const cors = require('cors');
 
 const City = require('../database/index.js');
 
@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-// app.use(cors());
+app.use(cors());
 
 app.get('/seattle', (req, res) => {
   City.find({name: 'Seattle, WA'})

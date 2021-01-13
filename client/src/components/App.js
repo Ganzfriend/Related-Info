@@ -1,22 +1,34 @@
 import React, {useState, useEffect} from "react";
 import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
+const axios = require('axios');
 
 const App = (props) => {
 
+  // seattle won't be the default once everything is set up, just for now
+  const [city, setCity] = useState('seattle');
   const [images, setImages] = useState([]);
 
   const {
     name,
     data
-  } = props;
+  } = city;
 
-  const {
-    homes,
-    activities,
-    nearbyCities
-  } = data;
+  // const {
+  //   homes,
+  //   activities,
+  //   nearbyCities
+  // } = data;
 
+  const getCityData = () => {
+    axios.get(`http://localhost:3000/${city}`)
+    .then(response => {
+      setCity(response.data);
+    })
+    .catch(err => console.log(err));
+  };
+
+  useEffect(() => { getCityData() }, []);
 
 
   return (
