@@ -39,9 +39,6 @@ app.get('/austin', (req, res) => {
 
 
 
-
-
-
 app.listen(PORT, () => {
   console.log(`server is running and listening on port ${PORT}`);
 });
