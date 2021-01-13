@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
+import Places from './Places';
 const axios = require('axios');
 
 const App = (props) => {
@@ -36,6 +37,7 @@ const App = (props) => {
       <h1>
         React is running! Let's get started!
       </h1>
+      <Places />
       <Button variant="contained">this is a material UI button</Button>
     </div>
   );
