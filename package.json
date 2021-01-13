@@ -1,0 +1,42 @@
+{
+  "name": "related-info",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production",
+    "start:react": "webpack serve --hot --mode development",
+    "react-dev": "webpack -d --watch",
+    "test": "jest"
+  },
+  "author": "Ganzfriend",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.11",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hot-loader": "^4.13.0",
+    "@material-ui/core": "^4.11.2",
+    "fontsource-roboto": "^4.0.0",
+    "@material-ui/icons": "^4.11.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.13.0",
+    "webpack-cli": "^4.3.1",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@hot-loader/react-dom": "^17.0.1+4.13.0",
+    "webpack-dev-server": "^3.11.1",
+    "css-loader": "^5.0.1",
+    "style-loader": "^2.0.0",
+    "eslint": "^7.17.0",
+    "eslint-plugin-react": "^7.22.0",
+    "jest": "^26.6.3",
+    "babel-jest": "^26.6.3"
+  }
+}
