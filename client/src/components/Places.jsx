@@ -1,38 +1,45 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
 
 const Places = ({homes}) => {
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles({
     root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > *': {
-        margin: theme.spacing(1),
-        width: theme.spacing(16),
-        height: theme.spacing(16),
-      },
+      minWidth: 275,
     },
-  }));
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+  });
 
   const classes = useStyles();
-
-  const addImage = (url) => (
-    {
-      paperContainer: {
-        backgroundImage: url,
-      },
-    }
-  );
+  // const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <div className={classes.root}>
-      {homes.map((home) => (
-        <div key={home._id}>
-          <Paper elevation={3} style={addImage(home.image)} />
-        </div>
+      { homes.map((home) => (
+        <Card className={classes.root} key={home._id}>
+          <CardMedia
+            className={classes.media}
+            image={home.image}
+            title="Contemplative Reptile"
+          />
+          <CardActions>
+            <Button size="small">Learn More</Button>
+          </CardActions>
+        </Card>
       ))}
-      {/* <Paper elevation={3} style={addImage(homes[0].image)} /> */}
     </div>
   );
 };
