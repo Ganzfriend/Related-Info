@@ -4,40 +4,40 @@ const path = require('path');
 const config = {
   entry: [
     'react-hot-loader/patch',
-    './client/src/index.js'
+    './client/src/index.jsx',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
-        ]
-      }
-    ]
+          'css-loader',
+        ],
+      },
+    ],
   },
   resolve: {
     extensions: [
       '.js',
-      '.jsx'
+      '.jsx',
     ],
     alias: {
-      'react-dom': '@hot-loader/react-dom'
-    }
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   devServer: {
-    contentBase: './dist'
-  }
+    contentBase: './dist',
+  },
 };
 
 module.exports = config;
