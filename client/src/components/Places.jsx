@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -21,20 +22,25 @@ const Places = ({homes}) => {
     pos: {
       marginBottom: 12,
     },
+    media: {
+      height: 200,
+      width: 200,
+    },
   });
 
   const classes = useStyles();
-  // const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <div className={classes.root}>
       { homes.map((home) => (
-        <Card className={classes.root} key={home._id}>
-          <CardMedia
-            className={classes.media}
-            image={home.image}
-            title="Contemplative Reptile"
-          />
+        <Card key={home._id}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={home.image}
+              title="It is a home!"
+            />
+          </CardActionArea>
           <CardActions>
             <Button size="small">Learn More</Button>
           </CardActions>

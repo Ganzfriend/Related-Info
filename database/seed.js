@@ -33,7 +33,7 @@ const sampleCities = [
         description: 'An afternoon at the market: Come experience Pike\'s Place!',
         price: 45,
         liked: false,
-        location: 'Pike Place Market, Seattle, WA'
+        location: 'Pike Place Market, Seattle, WA',
       }],
 
       nearbyCities:
@@ -60,7 +60,7 @@ const sampleCities = [
         superhost: false,
         liked: false,
         location: 'Oakland, CA',
-        url: "https://www.google.com"
+        url: "https://www.google.com",
       }],
 
       activities:
