@@ -17,19 +17,22 @@ const Places = ({homes}) => {
 
   const classes = useStyles();
 
+  const addImage = (url) => (
+    {
+      paperContainer: {
+        backgroundImage: url,
+      },
+    }
+  );
+
   return (
     <div className={classes.root}>
-      {homes.map((home) => {
-        const styles = {
-          backgroundImage: `url(${home.image})`,
-        };
-
-        return (
-          <div key={home._id}>
-            <Paper elevation={3} style={styles} />
-          </div>
-        );
-      })}
+      {homes.map((home) => (
+        <div key={home._id}>
+          <Paper elevation={3} style={addImage(home.image)} />
+        </div>
+      ))}
+      {/* <Paper elevation={3} style={addImage(homes[0].image)} /> */}
     </div>
   );
 };

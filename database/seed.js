@@ -4,7 +4,7 @@
 // stretch goal => add url prop to all homes,
 // sending to that home's endpoint & rendering in main component
 
-const City = require('./index.js');
+const City = require('./index');
 
 const sampleCities = [
   {
@@ -13,7 +13,7 @@ const sampleCities = [
       homes:
       [{
         id: 1,
-        image: "https://unsplash.com/photos/skUTVJi8-jc",
+        image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
         reviews: 8,
         type: 'Private room',
         beds: 2,
@@ -22,7 +22,7 @@ const sampleCities = [
         superhost: true,
         liked: true,
         location: 'Auburn, WA',
-        url: "https://www.google.com"
+        url: 'https://www.google.com',
       }],
 
       activities:

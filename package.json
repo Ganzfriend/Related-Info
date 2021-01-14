@@ -1,7 +1,7 @@
 {
   "name": "related-info",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production",
