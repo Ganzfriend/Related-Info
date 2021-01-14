@@ -32,12 +32,10 @@ const App = () => {
 
   return (
     <div>
-      <h1>
-        React is running! Let`s get started!
-      </h1>
       { data
         ? (
           <div>
+            <h1>More places to stay</h1>
             <Places homes={data.homes} />
           </div>
         )

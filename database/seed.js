@@ -25,7 +25,7 @@ const sampleCities = [
       },
       {
         image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
-        reviews: 8,
+        reviews: 0,
         type: 'Private room',
         beds: 2,
         description: 'Cozy and quaint, but also haunted (by Elon Musk\'s time-travelling ghost)',
@@ -37,7 +37,7 @@ const sampleCities = [
       },
       {
         image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
-        reviews: 8,
+        reviews: 25,
         type: 'Private room',
         beds: 2,
         description: 'Cozy and quaint, but also haunted (by Elon Musk\'s time-travelling ghost)',
@@ -49,7 +49,7 @@ const sampleCities = [
       },
       {
         image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
-        reviews: 8,
+        reviews: 0,
         type: 'Private room',
         beds: 2,
         description: 'Cozy and quaint, but also haunted (by Elon Musk\'s time-travelling ghost)',
