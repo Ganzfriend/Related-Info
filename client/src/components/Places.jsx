@@ -29,7 +29,7 @@ const Places = ({homes}) => {
                 className={classes.media}
                 // image={home.image}
                 image={placeholderImageURL}
-                title={home.description}
+                title="Click for more!"
               />
               <FavoriteTwoToneIcon />
               <Typography style={{ color: 'gray' }}>
@@ -37,11 +37,18 @@ const Places = ({homes}) => {
                 {home.reviews > 0 ? `${home.reviews} reviews` : 'New'}
               </Typography>
               <Typography>
-                <span className={classes.description}>
+                <span className={classes.content}>
                   {home.type}
                   {bull}
                   {`${home.beds} beds`}
                 </span>
+              </Typography>
+              <Typography className={classes.content}>
+                {home.description}
+              </Typography>
+              <Typography className={classes.content}>
+                <span className={classes.price}> ${home.price} </span>
+                / night
               </Typography>
             </CardActionArea>
           </Card>

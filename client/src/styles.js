@@ -21,17 +21,22 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       card: {
         margin: 15,
+        paddingBottom: 10,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
       },
-      description: {
+      content: {
         marginLeft: 5,
+        maxWidth: 300,
       },
       media: {
         height: 200,
         width: 300,
         marginBottom: 10,
         borderRadius: '8px',
+      },
+      price: {
+        fontWeight: 'bold',
       },
     }
   );
