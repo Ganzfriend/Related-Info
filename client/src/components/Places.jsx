@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
 
 const Places = ({homes}) => {
   const useStyles = makeStyles({
@@ -29,6 +30,7 @@ const Places = ({homes}) => {
   });
 
   const classes = useStyles();
+  const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
 
   return (
     <div className={classes.root}>
@@ -37,7 +39,8 @@ const Places = ({homes}) => {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image={home.image}
+              // image={home.image}
+              image={placeholderImageURL}
               title="It is a home!"
             />
           </CardActionArea>
