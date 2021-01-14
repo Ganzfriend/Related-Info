@@ -7,6 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 // import Button from '@material-ui/core/Button';
 import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import GradeIcon from '@material-ui/icons/Grade';
 
 const Places = ({homes}) => {
   const useStyles = makeStyles({
@@ -20,9 +22,6 @@ const Places = ({homes}) => {
     // title: {
     //   fontSize: 14,
     // },
-    // pos: {
-    //   marginBottom: 12,
-    // },
     card: {
       margin: 10,
       borderRadius: '8px',
@@ -31,6 +30,8 @@ const Places = ({homes}) => {
     media: {
       height: 200,
       width: 300,
+      marginBottom: 10,
+      borderRadius: '8px',
     },
   });
 
@@ -46,12 +47,13 @@ const Places = ({homes}) => {
               className={classes.media}
               // image={home.image}
               image={placeholderImageURL}
-              title="It is a home!"
+              title={home.description}
             />
           </CardActionArea>
-          {/* <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions> */}
+          <Typography>
+            <GradeIcon />
+            {home.reviews}
+          </Typography>
         </Card>
       ))}
     </Box>
