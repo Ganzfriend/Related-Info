@@ -9,6 +9,7 @@ import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
+import IconButton from '@material-ui/core/IconButton';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import styles from '../styles.js';
 
@@ -30,8 +31,11 @@ const Places = ({homes}) => {
                 // image={home.image}
                 image={placeholderImageURL}
                 title="Click for more!"
-              />
-              <FavoriteTwoToneIcon />
+              >
+                <IconButton>
+                  <FavoriteTwoToneIcon className={classes.heart} />
+                </IconButton>
+              </CardMedia>
               <Typography style={{ color: 'gray' }}>
                 <StarRateIcon style={{ color: 'red' }} />
                 {home.reviews > 0 ? `${home.reviews} reviews` : 'New'}
@@ -43,7 +47,7 @@ const Places = ({homes}) => {
                   {`${home.beds} beds`}
                 </span>
               </Typography>
-              <Typography className={classes.content}>
+              <Typography className={`${classes.content} ${classes.description}`}>
                 {home.description}
               </Typography>
               <Typography className={classes.content}>

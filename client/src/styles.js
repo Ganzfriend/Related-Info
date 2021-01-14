@@ -27,11 +27,19 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       content: {
         marginLeft: 5,
-        maxWidth: 300,
+        maxWidth: 310,
+      },
+      description: {
+        fontStyle: 'italic',
+      },
+      heart: {
+        filter: 'invert(1) saturate(15) hue-rotate(180deg)',
+        fontSize: 35,
+        marginLeft: 280,
       },
       media: {
-        height: 200,
-        width: 300,
+        height: 220,
+        width: '100%',
         marginBottom: 10,
         borderRadius: '8px',
       },
