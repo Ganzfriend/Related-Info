@@ -32,8 +32,13 @@ const styles = ({ spacing, palette, breakpoints }) => {
       description: {
         fontStyle: 'italic',
       },
-      heart: {
+      notLiked: {
         filter: 'invert(1) saturate(15) hue-rotate(180deg)',
+        fontSize: 35,
+        marginLeft: 280,
+      },
+      liked: {
+        color: 'red',
         fontSize: 35,
         marginLeft: 280,
       },
@@ -42,9 +47,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
         width: '100%',
         marginBottom: 10,
         borderRadius: '8px',
-      },
-      price: {
-        fontWeight: 'bold',
       },
     }
   );

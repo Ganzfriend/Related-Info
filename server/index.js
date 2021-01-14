@@ -18,6 +18,25 @@ app.get('/seattle', (req, res) => {
     .catch((err) => res.send(err));
 });
 
+app.patch('/seattle/:id', (req, res) => {
+  const liked = req.body.liked;
+  const _id = req.params.id;
+  City.findOneAndUpdate({name: 'Seattle, WA', _id }, { $set: { liked } })
+    .then((data) => res.send(data))
+    .catch((err) => res.send(err));
+});
+
+/*
+findOneAndUpdate(
+    { "_id": folderId, "permissions._id": permission._id },
+    {
+        "$set": {
+            "permissions.$": permission
+        }
+    }
+
+*/
+
 app.get('/oakland', (req, res) => {
   City.find({name: 'Oakland, CA'})
     .then((data) => res.send(data))

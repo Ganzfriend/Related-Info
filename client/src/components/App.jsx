@@ -8,11 +8,12 @@ const axios = require('axios');
 const App = () => {
 // seattle won't be the default once everything is set up, just for now
   const [city, setCity] = useState('seattle');
+  const [cityInfo, setCityInfo] = useState({});
 
   const {
     // name,
     data,
-  } = city;
+  } = cityInfo;
 
   // const {
   //   homes,
@@ -23,7 +24,7 @@ const App = () => {
   const getCityData = () => {
     axios.get(`http://localhost:3000/${city}`)
       .then((response) => {
-        setCity(response.data[0]);
+        setCityInfo(response.data[0]);
       })
       .catch((err) => console.log(err));
   };
@@ -36,7 +37,7 @@ const App = () => {
         ? (
           <div>
             <h1>More places to stay</h1>
-            <Places homes={data.homes} />
+            <Places city={city} cityInfo={cityInfo} />
           </div>
         )
         : <p>Loading...</p>}

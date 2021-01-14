@@ -13,11 +13,23 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import styles from '../styles.js';
 
+const axios = require('axios');
+
 const useStyles = makeStyles(styles);
 
-const Places = ({homes}) => {
+const Places = ({city, cityInfo}) => {
+  const homes = cityInfo.data.homes;
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
+
+  const handleHeartClick = (home) => {
+    let liked = !home.liked;
+    console.log('liked is: ', liked);
+    console.log('_id is: ', home._id);
+    axios.patch(`http://localhost:3000/${city}/${home._id}`, { liked })
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Box className={classes.root}>
@@ -32,9 +44,15 @@ const Places = ({homes}) => {
                 image={placeholderImageURL}
                 title="Click for more!"
               >
-                <IconButton>
-                  <FavoriteTwoToneIcon className={classes.heart} />
-                </IconButton>
+                <FavoriteTwoToneIcon
+                  className={home.liked ? classes.liked : classes.notLiked}
+                  onClick={() => { handleHeartClick(home); }}
+                />
+
+                {/* <IconButton
+                  onClick={() => { handleHeartClick(home); }}
+                >
+                </IconButton> */}
               </CardMedia>
               <Typography style={{ color: 'gray' }}>
                 <StarRateIcon style={{ color: 'red' }} />
@@ -51,7 +69,7 @@ const Places = ({homes}) => {
                 {home.description}
               </Typography>
               <Typography className={classes.content}>
-                <span className={classes.price}> ${home.price} </span>
+                <strong> {`$${home.price}`} </strong>
                 / night
               </Typography>
             </CardActionArea>
