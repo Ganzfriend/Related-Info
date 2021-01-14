@@ -10,40 +10,11 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import styles from '../styles.js';
+
+const useStyles = makeStyles(styles);
 
 const Places = ({homes}) => {
-  const useStyles = makeStyles({
-    root: {
-      marginBottom: 12,
-      display: 'flex',
-      flexWrap: 'wrap',
-      // height: 275,
-      // width: 267,
-    },
-    // title: {
-    //   fontSize: 14,
-    // },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    card: {
-      margin: 15,
-      borderRadius: '8px',
-      variant: 'rgb(255, 0, 0) dashed',
-    },
-    description: {
-      marginLeft: 5,
-    },
-    media: {
-      height: 200,
-      width: 300,
-      marginBottom: 10,
-      borderRadius: '8px',
-    },
-  });
-
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
