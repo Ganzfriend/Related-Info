@@ -9,6 +9,7 @@ import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 
 const Places = ({homes}) => {
   const useStyles = makeStyles({
@@ -28,7 +29,7 @@ const Places = ({homes}) => {
       transform: 'scale(0.8)',
     },
     card: {
-      margin: 10,
+      margin: 15,
       borderRadius: '8px',
       variant: 'rgb(255, 0, 0) dashed',
     },
@@ -59,18 +60,19 @@ const Places = ({homes}) => {
                 image={placeholderImageURL}
                 title={home.description}
               />
+              <FavoriteTwoToneIcon />
+              <Typography style={{ color: 'gray' }}>
+                <StarRateIcon style={{ color: 'red' }} />
+                {home.reviews > 0 ? `${home.reviews} reviews` : 'New'}
+              </Typography>
+              <Typography>
+                <span className={classes.description}>
+                  {home.type}
+                  {bull}
+                  {`${home.beds} beds`}
+                </span>
+              </Typography>
             </CardActionArea>
-            <Typography style={{ color: 'gray' }}>
-              <StarRateIcon style={{ color: 'red' }} />
-              {home.reviews > 0 ? `${home.reviews} reviews` : 'New'}
-            </Typography>
-            <Typography>
-              <span className={classes.description}>
-                {home.type}
-                {bull}
-                {`${home.beds} beds`}
-              </span>
-            </Typography>
           </Card>
         );
       })}
