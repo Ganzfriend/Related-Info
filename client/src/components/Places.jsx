@@ -44,10 +44,12 @@ const Places = ({city, cityInfo}) => {
                 image={placeholderImageURL}
                 title="Click for more!"
               >
-                <FavoriteTwoToneIcon
-                  className={home.liked ? classes.liked : classes.notLiked}
-                  onClick={() => { handleHeartClick(home); }}
-                />
+                {home.superhost ? <span className={classes.superhost}> SUPERHOST </span> : '' }
+                <span className={home.liked ? classes.liked : classes.notLiked}>
+                  <FavoriteTwoToneIcon
+                    onClick={() => { handleHeartClick(home); }}
+                  />
+                </span>
 
                 {/* <IconButton
                   onClick={() => { handleHeartClick(home); }}

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { hot } from 'react-hot-loader/root';
 // import Button from '@material-ui/core/Button';
 import Places from './Places';
+import Activities from './Activities';
 
 const axios = require('axios');
 
@@ -38,6 +39,8 @@ const App = () => {
           <div>
             <h1>More places to stay</h1>
             <Places city={city} cityInfo={cityInfo} />
+            <h1>Things to do nearby</h1>
+            <Activities city={city} cityInfo={cityInfo} />
           </div>
         )
         : <p>Loading...</p>}

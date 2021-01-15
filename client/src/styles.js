@@ -21,6 +21,7 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       card: {
         margin: 15,
+        // maxWidth: 310,
         paddingBottom: 10,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
@@ -47,6 +48,16 @@ const styles = ({ spacing, palette, breakpoints }) => {
         width: '100%',
         marginBottom: 10,
         borderRadius: '8px',
+      },
+      superhost: {
+        color: 'black',
+        fontWeight: 'bold',
+        backgroundColor: 'white',
+        border: '1px solid black',
+        borderRadius: 6,
+        marginLeft: 15,
+        marginTop: 15,
+        padding: '7px 8px',
       },
     }
   );
