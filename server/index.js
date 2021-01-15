@@ -17,25 +17,25 @@ app.use(cors());
 /* clean this file up using express router, or separate out into other files */
 
 app.get('/seattle', (req, res) => {
-  Home.find({location: 'Seattle, WA'})
+  Home.find({city: 'Seattle, WA'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
 app.get('/oakland', (req, res) => {
-  Home.find({name: 'Oakland, CA'})
+  Home.find({city: 'Oakland, CA'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
 app.get('/hollywood', (req, res) => {
-  Home.find({name: 'Hollywood, CA'})
+  Home.find({city: 'Hollywood, CA'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
 app.get('/austin', (req, res) => {
-  Home.find({name: 'Austin, TX'})
+  Home.find({city: 'Austin, TX'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
