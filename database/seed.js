@@ -4,7 +4,56 @@
 // stretch goal => add url prop to all homes,
 // sending to that home's endpoint & rendering in main component
 
-const City = require('./index');
+const {City, Home} = require('./index');
+
+const sampleHomes = [{
+  image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
+  reviews: 8,
+  type: 'Private room',
+  beds: 2,
+  description: 'Cozy and quaint, but also haunted (by Elon Musk\'s time-travelling ghost)',
+  price: 65,
+  superhost: true,
+  liked: false,
+  location: 'Seattle, WA',
+  url: 'https://www.google.com',
+},
+{
+  image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
+  reviews: 0,
+  type: 'Private room',
+  beds: 2,
+  description: 'Cozy and quaint, but also haunted (by Elon Musk\'s time-travelling ghost)',
+  price: 65,
+  superhost: false,
+  liked: true,
+  location: 'Seattle, WA',
+  url: 'https://www.google.com',
+},
+{
+  image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
+  reviews: 25,
+  type: 'Private room',
+  beds: 2,
+  description: 'Cozy and quaint, but also haunted (by Elon Musk\'s time-travelling ghost)',
+  price: 65,
+  superhost: true,
+  liked: true,
+  location: 'Seattle, WA',
+  url: 'https://www.google.com',
+},
+{
+  image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
+  reviews: 0,
+  type: 'Private room',
+  beds: 2,
+  description: 'Cozy and quaint, but also haunted (by Elon Musk\'s time-travelling ghost)',
+  price: 65,
+  superhost: false,
+  liked: false,
+  location: 'Seattle, WA',
+  url: 'https://www.google.com',
+}];
 
 const sampleCities = [
   {
@@ -494,6 +543,7 @@ const sampleCities = [
 
 const insertSampleCities = () => {
   City.create(sampleCities)
+    .then(() => Home.create(sampleHomes))
     .then(() => City.disconnect())
     .catch((err) => console.log(err));
 };

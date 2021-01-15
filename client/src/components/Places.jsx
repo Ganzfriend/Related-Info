@@ -17,25 +17,23 @@ const axios = require('axios');
 
 const useStyles = makeStyles(styles);
 
-const Places = ({city, cityInfo}) => {
-  const homes = cityInfo.data.homes;
-  const name = cityInfo.name;
-  const dataId = cityInfo.data._id;
+const Places = ({city, homeInfo}) => {
+  // const homes = homeInfo.data.homes;
+  // const name = homeInfo[0].location;
+  // const dataId = homeInfo.data._id;
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   const handleHeartClick = (home) => {
     let liked = !home.liked;
-    console.log('liked is: ', liked);
-    console.log('_id is: ', home._id);
-    axios.patch(`http://localhost:3000/${city}/${home._id}`, { liked, name, dataId })
+    axios.patch(`http://localhost:3000/${home._id}`, { liked })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   };
 
   return (
     <Box className={classes.root}>
-      { homes.map((home) => {
+      { homeInfo.map((home) => {
         const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
         return (
           <Card key={home._id} className={classes.card}>

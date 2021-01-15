@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { hot } from 'react-hot-loader/root';
-// import Button from '@material-ui/core/Button';
 import Places from './Places';
 import Activities from './Activities';
 
@@ -8,39 +7,29 @@ const axios = require('axios');
 
 const App = () => {
 // seattle won't be the default once everything is set up, just for now
+// maybe instead of nearby cities at the bottom, list out the four city options,
+// so user can toggle between
+// on click of city, we would call setCity on that value
   const [city, setCity] = useState('seattle');
-  const [cityInfo, setCityInfo] = useState({});
+  const [homeInfo, setHomeInfo] = useState([]);
 
-  const {
-    // name,
-    data,
-  } = cityInfo;
-
-  // const {
-  //   homes,
-  //   activities,
-  //   nearbyCities
-  // } = data;
-
-  const getCityData = () => {
+  const getHomeData = () => {
     axios.get(`http://localhost:3000/${city}`)
-      .then((response) => {
-        setCityInfo(response.data[0]);
-      })
+      .then((response) => setHomeInfo(response.data))
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { getCityData(); }, []);
+  useEffect(() => { getHomeData(); }, []);
 
   return (
     <div>
-      { data
+      { homeInfo
         ? (
           <div>
             <h1>More places to stay</h1>
-            <Places city={city} cityInfo={cityInfo} />
+            <Places city={city} homeInfo={homeInfo} />
             <h1>Things to do nearby</h1>
-            <Activities city={city} cityInfo={cityInfo} />
+            <Activities city={city} homeInfo={homeInfo} />
           </div>
         )
         : <p>Loading...</p>}

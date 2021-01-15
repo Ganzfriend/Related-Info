@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-const City = require('../database/index.js');
+const {City, Home} = require('../database/index.js');
 
 const app = express();
 const PORT = 3000;
@@ -13,21 +13,25 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 app.get('/seattle', (req, res) => {
-  City.find({name: 'Seattle, WA'})
+  Home.find({location: 'Seattle, WA'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
-app.patch('/seattle/:id', (req, res) => {
+app.patch('/:id', (req, res) => {
   const { name, liked, dataId } = req.body;
   const _id = req.params.id;
   console.log('_id is ', _id);
   console.log('req.body is ', req.body);
+  // City.find({_id})
+  //   .then(city => console.log('this is the city', city))
+  //   .catch(err => res.send(err));
 
-  City.findOneAndUpdate({ name, _id: dataId }, { $set: { homes: _id } }, { liked })
+  Home.findOneAndUpdate({ _id }, { liked })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
+
 // {_id:req.body._id}, {$push: {"sensors" :
 // {"sensor_name" : req.body.sensor_name , "measurements.0.time": req.body.time } } },
 // {new:true}
