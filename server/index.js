@@ -1,3 +1,5 @@
+/* eslint-disable spaced-comment */
+/* eslint-disable no-underscore-dangle */
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -12,57 +14,38 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
+/* clean this file up using express router, or separate out into other files */
+
 app.get('/seattle', (req, res) => {
   Home.find({location: 'Seattle, WA'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
-app.patch('/:id', (req, res) => {
-  const { name, liked, dataId } = req.body;
-  const _id = req.params.id;
-  console.log('_id is ', _id);
-  console.log('req.body is ', req.body);
-  // City.find({_id})
-  //   .then(city => console.log('this is the city', city))
-  //   .catch(err => res.send(err));
-
-  Home.findOneAndUpdate({ _id }, { liked })
-    .then((data) => res.send(data))
-    .catch((err) => res.send(err));
-});
-
-// {_id:req.body._id}, {$push: {"sensors" :
-// {"sensor_name" : req.body.sensor_name , "measurements.0.time": req.body.time } } },
-// {new:true}
-// make sure the id being passed in is the one you want! either from data or the home itself
-// make it match up with what's in Places.jsx
-
-/*
-findOneAndUpdate(
-    { "_id": folderId, "permissions._id": permission._id },
-    {
-        "$set": {
-            "permissions.$": permission
-        }
-    }
-
-*/
-
 app.get('/oakland', (req, res) => {
-  City.find({name: 'Oakland, CA'})
+  Home.find({name: 'Oakland, CA'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
 app.get('/hollywood', (req, res) => {
-  City.find({name: 'Hollywood, CA'})
+  Home.find({name: 'Hollywood, CA'})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
 app.get('/austin', (req, res) => {
-  City.find({name: 'Austin, TX'})
+  Home.find({name: 'Austin, TX'})
+    .then((data) => res.send(data))
+    .catch((err) => res.send(err));
+});
+
+////////////////////////////////////////
+
+app.patch('/homes/:id', (req, res) => {
+  const { liked } = req.body;
+  const _id = req.params.id;
+  Home.findOneAndUpdate({ _id }, { liked })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });

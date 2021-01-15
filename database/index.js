@@ -9,9 +9,8 @@ db.once('open', () => {
 });
 
 const homeSchema = new mongoose.Schema({
-  // homeId: Number,
   image: String,
-  reviews: {type: Number, default: 0 },
+  reviews: { type: Number, default: 0 },
   type: String,
   beds: Number,
   description: String,
@@ -19,39 +18,28 @@ const homeSchema = new mongoose.Schema({
   superhost: Boolean,
   liked: Boolean,
   location: String,
+  city: String,
 });
 
 const Home = mongoose.model('Home', homeSchema);
 
 const activitySchema = new mongoose.Schema({
-  // activityId: Number,
   image: String,
-  reviews: {type: Number, default: 0 },
+  reviews: { type: Number, default: 0 },
   description: String,
   price: Number,
   liked: Boolean,
   location: String,
+  city: String,
 });
 
-const nearbyCitySchema = new mongoose.Schema({
-  // nearbyCityId: Number,
+const Activity = mongoose.model('Activity', activitySchema);
+
+const citySchema = new mongoose.Schema({
   name: String,
   url: String,
 });
 
-const dataSchema = new mongoose.Schema({
-  // dataId: Number,
-  homes: [homeSchema],
-  activities: [activitySchema],
-  nearbyCities: [nearbyCitySchema],
-});
-
-const citySchema = new mongoose.Schema({
-  // cityId: Number,
-  name: String,
-  data: dataSchema,
-});
-
 const City = mongoose.model('City', citySchema);
 
-module.exports = {City, Home};
+module.exports = {City, Home, Activity};

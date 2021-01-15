@@ -6,10 +6,12 @@ import Activities from './Activities';
 const axios = require('axios');
 
 const App = () => {
-// seattle won't be the default once everything is set up, just for now
-// maybe instead of nearby cities at the bottom, list out the four city options,
-// so user can toggle between
-// on click of city, we would call setCity on that value
+  /*
+  seattle won't be the default once everything is set up, just for now
+  maybe instead of nearby cities at the bottom, list out the four city options,
+  so user can toggle between
+  on click of city, we would call setCity on that value
+  */
   const [city, setCity] = useState('seattle');
   const [homeInfo, setHomeInfo] = useState([]);
 

@@ -19,14 +19,14 @@ const useStyles = makeStyles(styles);
 
 const Places = ({city, homeInfo}) => {
   // const homes = homeInfo.data.homes;
-  // const name = homeInfo[0].location;
+  // const name = homeInfo[0].city;
   // const dataId = homeInfo.data._id;
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   const handleHeartClick = (home) => {
     let liked = !home.liked;
-    axios.patch(`http://localhost:3000/${home._id}`, { liked })
+    axios.patch(`http://localhost:3000/homes/${home._id}`, { liked })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   };
