@@ -45,7 +45,7 @@ app.get('/austin', (req, res) => {
 app.patch('/homes/:id', (req, res) => {
   const { liked } = req.body;
   const _id = req.params.id;
-  Home.findOneAndUpdate({ _id }, { liked })
+  Home.updateOne({ _id }, { liked })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });

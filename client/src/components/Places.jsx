@@ -9,7 +9,7 @@ import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import styles from '../styles.js';
 
@@ -17,17 +17,16 @@ const axios = require('axios');
 
 const useStyles = makeStyles(styles);
 
-const Places = ({city, homeInfo}) => {
-  // const homes = homeInfo.data.homes;
-  // const name = homeInfo[0].city;
-  // const dataId = homeInfo.data._id;
+const Places = ({ homeInfo, getHomeData }) => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   const handleHeartClick = (home) => {
     let liked = !home.liked;
+    // could be improved to re-render only the specific card
+    // rather than the whole component
     axios.patch(`http://localhost:3000/homes/${home._id}`, { liked })
-      .then((result) => console.log(result))
+      .then(() => getHomeData())
       .catch((err) => console.log(err));
   };
 
@@ -40,7 +39,6 @@ const Places = ({city, homeInfo}) => {
             <CardActionArea>
               <CardMedia
                 className={classes.media}
-                // image={home.image}
                 image={placeholderImageURL}
                 title={home.description}
               >
@@ -50,11 +48,6 @@ const Places = ({city, homeInfo}) => {
                     onClick={() => { handleHeartClick(home); }}
                   />
                 </div>
-
-                {/* <IconButton
-                  onClick={() => { handleHeartClick(home); }}
-                >
-                </IconButton> */}
               </CardMedia>
               <Typography style={{ color: 'gray' }}>
                 <StarRateIcon style={{ color: 'red' }} />
