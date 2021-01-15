@@ -22,26 +22,29 @@ const styles = ({ spacing, palette, breakpoints }) => {
       card: {
         margin: 15,
         // maxWidth: 310,
-        paddingBottom: 10,
+        // paddingBottom: 10,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
       },
       content: {
         marginLeft: 5,
         maxWidth: 310,
+        padding: 10,
       },
       description: {
         fontStyle: 'italic',
       },
       notLiked: {
+        display: 'inline-block',
         filter: 'invert(1) saturate(15) hue-rotate(180deg)',
-        fontSize: 35,
-        marginLeft: 280,
+        fontSize: 40,
+        marginLeft: '85%',
       },
       liked: {
+        display: 'inline-block',
         color: 'red',
-        fontSize: 35,
-        marginLeft: 280,
+        fontSize: 40,
+        marginLeft: '85%',
       },
       media: {
         height: 220,
@@ -50,13 +53,14 @@ const styles = ({ spacing, palette, breakpoints }) => {
         borderRadius: '8px',
       },
       superhost: {
+        display: 'inline-block',
         color: 'black',
         fontWeight: 'bold',
         backgroundColor: 'white',
         border: '1px solid black',
         borderRadius: 6,
         marginLeft: 15,
-        marginTop: 15,
+        marginTop: 20,
         padding: '7px 8px',
       },
     }

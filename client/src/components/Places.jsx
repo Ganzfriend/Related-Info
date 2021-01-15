@@ -19,6 +19,8 @@ const useStyles = makeStyles(styles);
 
 const Places = ({city, cityInfo}) => {
   const homes = cityInfo.data.homes;
+  const name = cityInfo.name;
+  const dataId = cityInfo.data._id;
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
@@ -26,7 +28,7 @@ const Places = ({city, cityInfo}) => {
     let liked = !home.liked;
     console.log('liked is: ', liked);
     console.log('_id is: ', home._id);
-    axios.patch(`http://localhost:3000/${city}/${home._id}`, { liked })
+    axios.patch(`http://localhost:3000/${city}/${home._id}`, { liked, name, dataId })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   };
@@ -42,14 +44,14 @@ const Places = ({city, cityInfo}) => {
                 className={classes.media}
                 // image={home.image}
                 image={placeholderImageURL}
-                title="Click for more!"
+                title={home.description}
               >
-                {home.superhost ? <span className={classes.superhost}> SUPERHOST </span> : '' }
-                <span className={home.liked ? classes.liked : classes.notLiked}>
+                {home.superhost ? <div className={classes.superhost}> SUPERHOST </div> : '' }
+                <div className={home.liked ? classes.liked : classes.notLiked}>
                   <FavoriteTwoToneIcon
                     onClick={() => { handleHeartClick(home); }}
                   />
-                </span>
+                </div>
 
                 {/* <IconButton
                   onClick={() => { handleHeartClick(home); }}
