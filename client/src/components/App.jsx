@@ -29,7 +29,7 @@ const App = () => {
         ? (
           <div>
             <h1>More places to stay</h1>
-            <Places city={city} homeInfo={homeInfo} />
+            <Places city={city} homeInfo={homeInfo} getHomeData={getHomeData} />
             <h1>Things to do nearby</h1>
             <Activities city={city} homeInfo={homeInfo} />
           </div>
