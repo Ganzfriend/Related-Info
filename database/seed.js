@@ -4,6 +4,7 @@
 // stretch goal => add url prop to all homes,
 // sending to that home's endpoint & rendering in main component
 
+const db = require('mongoose');
 const {City, Home, Activity} = require('./index');
 
 const sampleCities = [
@@ -363,7 +364,7 @@ const insertSampleCities = () => {
   City.create(sampleCities)
     .then(() => Home.create(sampleHomes))
     .then(() => Activity.create(sampleActivities))
-    .then(() => City.disconnect())
+    .then(() => db.disconnect())
     .catch((err) => console.log(err));
 };
 
