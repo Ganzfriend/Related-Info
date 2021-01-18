@@ -19,10 +19,12 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
+        exclude: /\.module\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.txt$/,
+        use: 'raw-loader',
       },
     ],
   },

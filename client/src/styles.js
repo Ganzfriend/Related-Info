@@ -1,4 +1,4 @@
-// eslint-disable-next-line arrow-body-style
+/* eslint-disable-next-line arrow-body-style */
 const styles = ({ spacing, palette, breakpoints }) => {
   // const primary1 = ;
   return (
