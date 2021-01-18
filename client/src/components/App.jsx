@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <div>
-      { homeInfo
+      { homeInfo.length
         ? (
           <div>
             <h1>More places to stay</h1>
