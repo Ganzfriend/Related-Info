@@ -3,10 +3,12 @@ const styles = ({ spacing, palette, breakpoints }) => {
   // const primary1 = ;
   return (
     {
+      container: {
+        marginLeft: 120,
+        marginRight: 120,
+      },
       root: {
-        marginBottom: 12,
-        display: 'flex',
-        flexWrap: 'wrap',
+        marginBottom: 50,
       },
       bullet: {
         display: 'inline-block',
