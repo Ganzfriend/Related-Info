@@ -4,6 +4,7 @@ import React from 'react';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   abstract: {
@@ -34,13 +35,13 @@ const MouseOverPopover = (props) => {
   const open = Boolean(anchorEl);
 
   return (
-    <div>
+    <Box>
       <Typography
+        className={classes.abstract}
         aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
-        className={classes.abstract}
       >
         {props.description}
       </Typography>
@@ -63,9 +64,9 @@ const MouseOverPopover = (props) => {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography>{props.description}</Typography>
+        {props.description}
       </Popover>
-    </div>
+    </Box>
   );
 };
 

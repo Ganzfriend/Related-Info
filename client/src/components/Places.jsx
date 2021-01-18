@@ -12,6 +12,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+// import Carousel from 'react-material-ui-carousel';
 // eslint-disable-next-line import/extensions
 import styles from '../styles.js';
 import MouseOverPopover from './MouseOverPopover';
@@ -62,9 +63,10 @@ const Places = ({ homeInfo, getHomeData }) => {
                   <Typography className={classes.bullet}> • </Typography>
                   <Typography> {`${home.beds} beds`} </Typography>
                 </Box>
-                <Typography className={classes.description}>
-                  <MouseOverPopover description={home.description} />
-                </Typography>
+                <MouseOverPopover
+                  className={classes.description}
+                  description={home.description}
+                />
                 <Box className={classes.priceBox}>
                   <Typography className={classes.price}>{`$${home.price}`}</Typography>
                   <Typography> / night </Typography>
