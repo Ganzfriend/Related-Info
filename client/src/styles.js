@@ -41,7 +41,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
       media: {
         height: 220,
         width: '100%',
-        marginBottom: 10,
         borderRadius: '8px',
         position: 'relative',
       },

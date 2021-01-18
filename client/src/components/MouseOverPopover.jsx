@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   popover: {
     pointerEvents: 'none',
+    fontSize: 20,
   },
   paper: {
     padding: theme.spacing(1),
