@@ -59,6 +59,18 @@ app.patch('/homes/:id', (req, res) => {
     .catch((err) => res.send(err));
 });
 
+////////////////////////////////////////
+
+app.patch('/activities/:id', (req, res) => {
+  const { liked } = req.body;
+  const _id = req.params.id;
+  Activity.updateOne({ _id }, { liked })
+    .then((data) => res.send(data))
+    .catch((err) => res.send(err));
+});
+
+////////////////////////////////////////
+
 app.listen(PORT, () => {
   console.log(`server is running and listening on port ${PORT}`);
 });
