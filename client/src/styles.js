@@ -3,6 +3,11 @@ const styles = ({ spacing, palette, breakpoints }) => {
   // const primary1 = ;
   return (
     {
+      arrows: {
+        display: 'block',
+        background: 'black',
+        fontSize: 50,
+      },
       bullet: {
         display: 'inline-block',
         margin: '0 2px',
@@ -27,16 +32,26 @@ const styles = ({ spacing, palette, breakpoints }) => {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
       },
+      // dotBar: {
+      //   display: 'flex',
+      //   // flexDirection: 'row',
+      //   // justifyContent: 'center',
+      //   // alignItems: 'space-around',
+      //   listStyleType: 'none',
+      // },
+      // dots: {
+      //   display: 'flex',
+      //   // justifyContent: 'center',
+      //   // alignItems: 'space-between',
+      //   flexDirection: 'row',
+      //   // margin: 10,
+      // },
       heart: {
         display: 'inline-block',
         filter: 'invert(1) saturate(15) hue-rotate(180deg)',
         position: 'absolute',
         top: 7,
         right: 7,
-      },
-      leftArrow: {
-        display: 'block',
-        background: 'lightgray',
       },
       liked: {
         filter: 'none',
@@ -60,23 +75,8 @@ const styles = ({ spacing, palette, breakpoints }) => {
         display: 'flex',
         alignItems: 'center',
       },
-      rightArrow: {
-        display: 'block',
-        background: 'black',
-      },
       root: {
         marginBottom: 50,
-      },
-      dotBar: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-      },
-      dots: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
       },
       superhost: {
         display: 'inline-block',

@@ -31,31 +31,30 @@ const Places = ({ homeInfo, getHomeData }) => {
   };
 
   const SampleNextArrow = (props) => {
-    const { className, style, onClick } = props;
+    const { className, onClick } = props;
     return (
       <Box
         className={className}
-        style={{ ...style, display: 'block', background: 'lightgray', borderRadius: 10 }}
+        style={{ display: 'block', background: 'lightgray', borderRadius: 10, fontSize: 50 }}
         onClick={onClick}
       />
     );
   };
 
   const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
+    const { className, onClick } = props;
     return (
       <Box
         className={className}
-        style={{ ...style, display: 'block', background: 'gray', borderRadius: 10 }}
+        style={{ display: 'block', background: 'gray', borderRadius: 10 }}
         onClick={onClick}
       />
     );
   };
 
   const settings = {
-    dots: true,
-    dotsClass: 'dots',
-    arrows: true,
+    dots: false,
+    // dotsClass: 'dots',
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -64,28 +63,28 @@ const Places = ({ homeInfo, getHomeData }) => {
     variableWidth: true,
     adaptiveHeight: true,
     // initialSlide: 0,
-    nextArrow: <SampleNextArrow className={classes.rightArrow} onClick={Slider.slickNext} />,
-    prevArrow: <SamplePrevArrow className={classes.leftArrow} onClick={Slider.slickPrev} />,
-    appendDots: dots => (
-      <Box
-        style={{
-          position: 'auto',
-          backgroundColor: '#ddd',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: 50,
-          padding: 10,
-          width: 1,
-          height: 1,
-          boxShadow: 'inset 0 1px 1px 0 #999',
-          margin: 0,
-        }}
-      >
-        <ul className={classes.dotBar}> {dots} </ul>
-      </Box>
-    ),
+    nextArrow: <SampleNextArrow className={classes.arrows} onClick={Slider.slickNext} />,
+    prevArrow: <SamplePrevArrow className={classes.arrows} onClick={Slider.slickPrev} />,
+    // appendDots: dots => (
+    //   <Box
+    //     style={{
+    //       position: 'auto',
+    //       backgroundColor: '#ddd',
+    //       display: 'flex',
+    //       flexDirection: 'row',
+    //       justifyContent: 'center',
+    //       alignItems: 'center',
+    //       borderRadius: 50,
+    //       padding: 10,
+    //       width: 1,
+    //       height: 1,
+    //       boxShadow: 'inset 0 1px 1px 0 #999',
+    //       margin: 0,
+    //     }}
+    //   >
+    //     <ul className={classes.dotBar}> {dots} </ul>
+    //   </Box>
+    // ),
     responsive: [
       {
         breakpoint: 1024,
