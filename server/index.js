@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-const {City, Home} = require('../database/index.js');
+const {City, Home, Activity} = require('../database/index.js');
 
 const app = express();
 const PORT = 3000;
@@ -16,29 +16,38 @@ app.use(cors());
 
 /* clean this file up using express router, or separate out into other files */
 
-app.get('/seattle', (req, res) => {
-  Home.find({city: 'Seattle, WA'})
+app.get('/homes/:city', (req, res) => {
+  const { city } = req.params;
+  Home.find({city})
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
-app.get('/oakland', (req, res) => {
-  Home.find({city: 'Oakland, CA'})
+////////////////////////////////////////
+app.get('/activities/:city', (req, res) => {
+  const { city } = req.params;
+  Activity.find({ city })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
-app.get('/hollywood', (req, res) => {
-  Home.find({city: 'Hollywood, CA'})
-    .then((data) => res.send(data))
-    .catch((err) => res.send(err));
-});
+// app.get('/activities/oakland', (req, res) => {
+//   Activity.find({city: 'Oakland, CA'})
+//     .then((data) => res.send(data))
+//     .catch((err) => res.send(err));
+// });
 
-app.get('/austin', (req, res) => {
-  Home.find({city: 'Austin, TX'})
-    .then((data) => res.send(data))
-    .catch((err) => res.send(err));
-});
+// app.get('/activities/hollywood', (req, res) => {
+//   Activity.find({city: 'Hollywood, CA'})
+//     .then((data) => res.send(data))
+//     .catch((err) => res.send(err));
+// });
+
+// app.get('/activities/austin', (req, res) => {
+//   Activity.find({city: 'Austin, TX'})
+//     .then((data) => res.send(data))
+//     .catch((err) => res.send(err));
+// });
 
 ////////////////////////////////////////
 

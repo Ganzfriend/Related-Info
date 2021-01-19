@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { hot } from 'react-hot-loader/root';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Places from './Places';
 import Activities from './Activities';
 import styles from '../styles.js';
@@ -18,30 +19,37 @@ const App = () => {
   so user can toggle between
   on click of city, we would call setCity on that value
   */
-  const [city, setCity] = useState('seattle');
+  const [city, setCity] = useState('Seattle, WA');
   const [homeInfo, setHomeInfo] = useState([]);
+  const [activityInfo, setActivityInfo] = useState([]);
   const classes = useStyles();
 
   const getHomeData = () => {
-    axios.get(`http://localhost:3000/${city}`)
+    axios.get(`http://localhost:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { getHomeData(); }, []);
+  const getActivityData = () => {
+    axios.get(`http://localhost:3000/activities/${city}`)
+      .then((response) => setActivityInfo(response.data))
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => { getHomeData(); getActivityData(); }, []);
 
   return (
     <Box className={classes.container}>
       { homeInfo.length
         ? (
-          <div>
+          <Box>
             <h1>More places to stay</h1>
             <Places city={city} homeInfo={homeInfo} getHomeData={getHomeData} />
             <h1>Things to do nearby</h1>
-            <Activities city={city} homeInfo={homeInfo} />
-          </div>
+            <Activities city={city} activityInfo={activityInfo} getActivityData={getActivityData} />
+          </Box>
         )
-        : <p>Loading...</p>}
+        : <Typography>Loading...</Typography>}
     </Box>
   );
 };
