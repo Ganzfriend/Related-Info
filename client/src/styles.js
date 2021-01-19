@@ -3,6 +3,22 @@ const styles = ({ spacing, palette, breakpoints }) => {
   // const primary1 = ;
   return (
     {
+      activityCard: {
+        margin: 0,
+        borderRadius: '8px',
+        variant: 'rgb(255, 0, 0) dashed',
+        width: '80%',
+      },
+      activityMedia: {
+        height: 320,
+        width: '100%',
+        borderRadius: '8px',
+        position: 'relative',
+      },
+      activitySlider: {
+        marginBottom: 50,
+        // width: '80%',
+      },
       arrows: {
         display: 'block',
         background: 'black',

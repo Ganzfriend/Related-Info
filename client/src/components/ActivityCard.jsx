@@ -15,10 +15,10 @@ import MouseOverPopover from './MouseOverPopover';
 const ActivityCard = ({ activity, classes, handleHeartClick }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
   return (
-    <Card key={activity._id} className={classes.card}>
+    <Card key={activity._id} className={classes.activityCard}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
+          className={classes.activityMedia}
           image={placeholderImageURL}
           title="Click to find out more about your next activity!"
         >
