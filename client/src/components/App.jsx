@@ -27,6 +27,7 @@ const App = () => {
   const getHomeData = () => {
     axios.get(`http://localhost:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
+      .then(() => getActivityData())
       .catch((err) => console.log(err));
   };
 
@@ -36,7 +37,7 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { getHomeData(); getActivityData(); }, []);
+  useEffect(() => { getHomeData(); }, []);
 
   return (
     <Box className={classes.container}>
