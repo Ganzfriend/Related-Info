@@ -3,13 +3,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
   // const primary1 = ;
   return (
     {
-      container: {
-        marginLeft: 120,
-        marginRight: 120,
-      },
-      root: {
-        marginBottom: 50,
-      },
       bullet: {
         display: 'inline-block',
         margin: '0 2px',
@@ -19,6 +12,11 @@ const styles = ({ spacing, palette, breakpoints }) => {
         margin: 15,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
+      },
+      container: {
+        marginLeft: 120,
+        marginRight: 120,
+        // position: 'relative',
       },
       content: {
         maxWidth: 310,
@@ -35,6 +33,10 @@ const styles = ({ spacing, palette, breakpoints }) => {
         position: 'absolute',
         top: 7,
         right: 7,
+      },
+      leftArrow: {
+        display: 'block',
+        background: 'lightgray',
       },
       liked: {
         filter: 'none',
@@ -58,9 +60,24 @@ const styles = ({ spacing, palette, breakpoints }) => {
         display: 'flex',
         alignItems: 'center',
       },
-      // dots: {
-      //   height: 200,
-      // },
+      rightArrow: {
+        display: 'block',
+        background: 'black',
+      },
+      root: {
+        marginBottom: 50,
+      },
+      dotBar: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+      },
+      dots: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+      },
       superhost: {
         display: 'inline-block',
         color: 'black',

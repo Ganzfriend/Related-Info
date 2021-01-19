@@ -7,6 +7,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable-next-line import/extensions */
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -32,53 +33,58 @@ const Places = ({ homeInfo, getHomeData }) => {
   const SampleNextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
-      <div
+      <Box
         className={className}
-        style={{ ...style, display: 'block', background: 'gray' }}
-        // onClick={onClick}
+        style={{ ...style, display: 'block', background: 'lightgray', borderRadius: 10 }}
+        onClick={onClick}
       />
     );
   };
 
   const SamplePrevArrow = (props) => {
-    const { className, style, slickPrev } = props;
+    const { className, style, onClick } = props;
     return (
-      <div
+      <Box
         className={className}
-        style={{ ...style, display: 'block', background: 'gray' }}
-        // onClick={slickPrev}
+        style={{ ...style, display: 'block', background: 'gray', borderRadius: 10 }}
+        onClick={onClick}
       />
     );
   };
 
   const settings = {
     dots: true,
-    // dotsClass: 'dots',
+    dotsClass: 'dots',
     arrows: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    focusOnSelect: true,
+    // focusOnSelect: true,
     variableWidth: true,
     adaptiveHeight: true,
-    initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    // initialSlide: 0,
+    nextArrow: <SampleNextArrow className={classes.rightArrow} onClick={Slider.slickNext} />,
+    prevArrow: <SamplePrevArrow className={classes.leftArrow} onClick={Slider.slickPrev} />,
     appendDots: dots => (
-      <div
+      <Box
         style={{
+          position: 'auto',
           backgroundColor: '#ddd',
-          display: 'inline-block',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
           borderRadius: 50,
           padding: 10,
           width: 1,
           height: 1,
           boxShadow: 'inset 0 1px 1px 0 #999',
+          margin: 0,
         }}
       >
-        <ul style={{ margin: 0 }}> {dots} </ul>
-      </div>
+        <ul className={classes.dotBar}> {dots} </ul>
+      </Box>
     ),
     responsive: [
       {
