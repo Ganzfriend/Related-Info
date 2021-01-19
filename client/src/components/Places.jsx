@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
@@ -28,8 +29,31 @@ const Places = ({ homeInfo, getHomeData }) => {
       .catch((err) => console.log(err));
   };
 
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: 'block', background: 'gray' }}
+        // onClick={onClick}
+      />
+    );
+  };
+
+  const SamplePrevArrow = (props) => {
+    const { className, style, slickPrev } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: 'block', background: 'gray' }}
+        // onClick={slickPrev}
+      />
+    );
+  };
+
   const settings = {
     dots: true,
+    // dotsClass: 'dots',
     arrows: true,
     infinite: true,
     speed: 500,
@@ -38,6 +62,50 @@ const Places = ({ homeInfo, getHomeData }) => {
     focusOnSelect: true,
     variableWidth: true,
     adaptiveHeight: true,
+    initialSlide: 0,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    appendDots: dots => (
+      <div
+        style={{
+          backgroundColor: '#ddd',
+          display: 'inline-block',
+          borderRadius: 50,
+          padding: 10,
+          width: 1,
+          height: 1,
+          boxShadow: 'inset 0 1px 1px 0 #999',
+        }}
+      >
+        <ul style={{ margin: 0 }}> {dots} </ul>
+      </div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

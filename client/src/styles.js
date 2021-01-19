@@ -58,6 +58,9 @@ const styles = ({ spacing, palette, breakpoints }) => {
         display: 'flex',
         alignItems: 'center',
       },
+      // dots: {
+      //   height: 200,
+      // },
       superhost: {
         display: 'inline-block',
         color: 'black',
