@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import HomeCard from './HomeCard';
 import styles from '../styles.js';
 
@@ -35,18 +36,19 @@ const Places = ({ homeInfo, getHomeData }) => {
     return (
       <Box
         className={className}
-        style={{ display: 'block', background: 'lightgray', borderRadius: 10, fontSize: 50 }}
+        style={{ display: 'block', background: 'lightgray', borderRadius: 10 }}
         onClick={onClick}
       />
     );
   };
 
   const SamplePrevArrow = (props) => {
-    const { className, onClick } = props;
+    const { className, style, onClick } = props;
     return (
       <Box
         className={className}
-        style={{ display: 'block', background: 'gray', borderRadius: 10 }}
+        content={<ArrowBackIosIcon />}
+        style={{ ...style, display: 'block', background: 'gray', borderRadius: 10 }}
         onClick={onClick}
       />
     );
@@ -64,7 +66,7 @@ const Places = ({ homeInfo, getHomeData }) => {
     adaptiveHeight: true,
     // initialSlide: 0,
     nextArrow: <SampleNextArrow className={classes.arrows} onClick={Slider.slickNext} />,
-    prevArrow: <SamplePrevArrow className={classes.arrows} onClick={Slider.slickPrev} />,
+    prevArrow: <SamplePrevArrow className={classes.arrows} onClick={Slider.slickNext} />,
     // appendDots: dots => (
     //   <Box
     //     style={{

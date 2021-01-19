@@ -6,7 +6,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
       arrows: {
         display: 'block',
         background: 'black',
-        fontSize: 50,
       },
       bullet: {
         display: 'inline-block',
