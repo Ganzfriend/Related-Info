@@ -10,6 +10,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Box from '@material-ui/core/Box';
+import { IconButton } from '@material-ui/core';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeCard from './HomeCard';
 import styles from '../styles.js';
 
@@ -17,6 +21,20 @@ const useStyles = makeStyles(styles);
 
 const Places = ({ homeInfo }) => {
   const classes = useStyles();
+
+  const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
+    const { carouselState: { currentSlide } } = rest;
+    return (
+      <Box className="carouselButtonGroup">
+        <IconButton className={currentSlide === 0 ? 'disable' : ''} onClick={() => previous()}>
+          <NavigateBeforeIcon />
+        </IconButton>
+        <IconButton onClick={() => next()}>
+          <NavigateNextIcon />
+        </IconButton>
+      </Box>
+    );
+  };
 
   const responsive = {
     large: {
@@ -42,7 +60,14 @@ const Places = ({ homeInfo }) => {
   };
 
   return (
-    <Carousel className={classes.root} responsive={responsive} infinite>
+    <Carousel
+      className={classes.root}
+      responsive={responsive}
+      infinite
+      renderButtonGroupOutside
+      arrows={false}
+      customButtonGroup={<ButtonGroup />}
+    >
       { homeInfo.map((home) => (
         <HomeCard
           home={home}

@@ -31,6 +31,9 @@ const styles = ({ spacing, palette, breakpoints }) => {
         flexDirection: 'row',
         justifyContent: 'center',
       },
+      carouselButtonGroup: {
+        position: 'absolute',
+      },
       container: {
         marginLeft: 120,
         marginRight: 120,
@@ -75,6 +78,7 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       root: {
         marginBottom: 50,
+        position: 'relative',
       },
       skeleton: {
         display: 'flex',

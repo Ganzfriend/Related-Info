@@ -12,7 +12,8 @@ import Places from '../src/components/Places';
 import { render, fireEvent } from './test-utils';
 
 const server = setupServer(
-  rest.get('/homes', (req, res, ctx) => res(ctx.json({ greeting: 'hello there' }))));
+  rest.get('/homes', (req, res, ctx) => res(ctx.json({ greeting: 'hello there' }))),
+);
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
