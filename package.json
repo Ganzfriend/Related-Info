@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "main": "index.jsx",
   "scripts": {
-    "build-dev": "webpack --mode development",
-    "build-prod": "webpack --mode production",
     "react-dev": "webpack --mode development -w",
     "seed": "node database/seed.js",
     "start": "nodemon server/index.js",
@@ -17,6 +15,7 @@
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "4.0.0-alpha.57",
+    "@testing-library/user-event": "github:testing-library/user-event",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
@@ -27,13 +26,15 @@
     "kill-port": "^1.6.1",
     "lodash.debounce": "^4.0.8",
     "mongoose": "^5.11.11",
+    "msw": "^0.25.0",
     "my-ui-lib": "^1.2.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0",
     "react-material-ui-carousel": "^2.1.2",
     "react-multi-carousel": "^2.6.1",
-    "react-placeholder-image": "^0.1.8"
+    "react-placeholder-image": "^0.1.8",
+    "react-test-renderer": "^17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -41,6 +42,7 @@
     "@babel/preset-react": "^7.12.10",
     "@hot-loader/react-dom": "^17.0.1",
     "@testing-library/dom": "^7.29.4",
+    "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
@@ -61,5 +63,8 @@
     "webpack": "^5.13.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
