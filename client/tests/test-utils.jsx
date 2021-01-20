@@ -43,9 +43,9 @@ export {
   findByDataCy,
 };
 
-const { getByDataCy } = render(<Component />)
+// const { getByDataCy } = render(<Component />)
 
-expect(getByDataCy('my-component')).toHaveTextContent('Hello')
+// expect(getByDataCy('my-component')).toHaveTextContent('Hello')
 /// ////////////////////////////////////////
 
 // re-export everything
