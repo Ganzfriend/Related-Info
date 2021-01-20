@@ -19,10 +19,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
         marginBottom: 50,
         // width: '80%',
       },
-      arrows: {
-        display: 'block',
-        background: 'black',
-      },
       bullet: {
         display: 'inline-block',
         margin: '0 2px',
@@ -32,6 +28,11 @@ const styles = ({ spacing, palette, breakpoints }) => {
         margin: 15,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
+      },
+      cardSkeletons: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
       },
       container: {
         marginLeft: 120,
@@ -47,20 +48,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
       },
-      // dotBar: {
-      //   display: 'flex',
-      //   // flexDirection: 'row',
-      //   // justifyContent: 'center',
-      //   // alignItems: 'space-around',
-      //   listStyleType: 'none',
-      // },
-      // dots: {
-      //   display: 'flex',
-      //   // justifyContent: 'center',
-      //   // alignItems: 'space-between',
-      //   flexDirection: 'row',
-      //   // margin: 10,
-      // },
       heart: {
         display: 'inline-block',
         filter: 'invert(1) saturate(15) hue-rotate(180deg)',
@@ -92,6 +79,12 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       root: {
         marginBottom: 50,
+      },
+      skeleton: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        margin: 20,
       },
       superhost: {
         display: 'inline-block',
