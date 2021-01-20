@@ -1,9 +1,15 @@
+/* eslint-disable import/extensions */
 import React, {useState, useEffect} from 'react';
 import { hot } from 'react-hot-loader/root';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
 import Places from './Places';
 import Activities from './Activities';
+import styles from '../styles.js';
 
 const axios = require('axios');
+
+const useStyles = makeStyles(styles);
 
 const App = () => {
   /*
@@ -14,6 +20,7 @@ const App = () => {
   */
   const [city, setCity] = useState('seattle');
   const [homeInfo, setHomeInfo] = useState([]);
+  const classes = useStyles();
 
   const getHomeData = () => {
     axios.get(`http://localhost:3000/${city}`)
@@ -24,8 +31,8 @@ const App = () => {
   useEffect(() => { getHomeData(); }, []);
 
   return (
-    <div>
-      { homeInfo
+    <Box className={classes.container}>
+      { homeInfo.length
         ? (
           <div>
             <h1>More places to stay</h1>
@@ -35,7 +42,7 @@ const App = () => {
           </div>
         )
         : <p>Loading...</p>}
-    </div>
+    </Box>
   );
 };
 

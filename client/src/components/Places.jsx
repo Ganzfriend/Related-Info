@@ -1,16 +1,18 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/extensions */
+/* eslint-disable no-console */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable-next-line import/extensions */
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
-import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
-import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import StarRateIcon from '@material-ui/icons/StarRate';
-// import IconButton from '@material-ui/core/IconButton';
-import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import { makeStyles } from '@material-ui/core/styles';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import HomeCard from './HomeCard';
 import styles from '../styles.js';
 
 const axios = require('axios');
@@ -19,59 +21,109 @@ const useStyles = makeStyles(styles);
 
 const Places = ({ homeInfo, getHomeData }) => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   const handleHeartClick = (home) => {
-    let liked = !home.liked;
-    // could be improved to re-render only the specific card
-    // rather than the whole component
+    const liked = !home.liked;
+    /* could be improved to re-render only the specific card rather than the whole component */
     axios.patch(`http://localhost:3000/homes/${home._id}`, { liked })
       .then(() => getHomeData())
       .catch((err) => console.log(err));
   };
 
+  const SampleNextArrow = (props) => {
+    const { className, onClick } = props;
+    return (
+      <Box
+        className={className}
+        style={{ display: 'block', background: 'lightgray', borderRadius: 10, fontSize: 50 }}
+        onClick={onClick}
+      />
+    );
+  };
+
+  const SamplePrevArrow = (props) => {
+    const { className, onClick } = props;
+    return (
+      <Box
+        className={className}
+        style={{ display: 'block', background: 'gray', borderRadius: 10 }}
+        onClick={onClick}
+      />
+    );
+  };
+
+  const settings = {
+    dots: false,
+    // dotsClass: 'dots',
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    // focusOnSelect: true,
+    variableWidth: true,
+    adaptiveHeight: true,
+    // initialSlide: 0,
+    nextArrow: <SampleNextArrow className={classes.arrows} onClick={Slider.slickNext} />,
+    prevArrow: <SamplePrevArrow className={classes.arrows} onClick={Slider.slickPrev} />,
+    // appendDots: dots => (
+    //   <Box
+    //     style={{
+    //       position: 'auto',
+    //       backgroundColor: '#ddd',
+    //       display: 'flex',
+    //       flexDirection: 'row',
+    //       justifyContent: 'center',
+    //       alignItems: 'center',
+    //       borderRadius: 50,
+    //       padding: 10,
+    //       width: 1,
+    //       height: 1,
+    //       boxShadow: 'inset 0 1px 1px 0 #999',
+    //       margin: 0,
+    //     }}
+    //   >
+    //     <ul className={classes.dotBar}> {dots} </ul>
+    //   </Box>
+    // ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <Box className={classes.root}>
-      { homeInfo.map((home) => {
-        const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
-        return (
-          <Card key={home._id} className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={placeholderImageURL}
-                title={home.description}
-              >
-                {home.superhost ? <div className={classes.superhost}> SUPERHOST </div> : '' }
-                <div className={home.liked ? classes.liked : classes.notLiked}>
-                  <FavoriteTwoToneIcon
-                    onClick={() => { handleHeartClick(home); }}
-                  />
-                </div>
-              </CardMedia>
-              <Typography style={{ color: 'gray' }}>
-                <StarRateIcon style={{ color: 'red' }} />
-                {home.reviews > 0 ? `${home.reviews} reviews` : 'New'}
-              </Typography>
-              <Typography>
-                <span className={classes.content}>
-                  {home.type}
-                  {bull}
-                  {`${home.beds} beds`}
-                </span>
-              </Typography>
-              <Typography className={`${classes.content} ${classes.description}`}>
-                {home.description}
-              </Typography>
-              <Typography className={classes.content}>
-                <strong> {`$${home.price}`} </strong>
-                / night
-              </Typography>
-            </CardActionArea>
-          </Card>
-        );
-      })}
-    </Box>
+    <Slider className={classes.root} {...settings}>
+      { homeInfo.map((home) => (
+        <HomeCard
+          home={home}
+          handleHeartClick={handleHeartClick}
+          classes={classes}
+          key={home._id}
+        />
+      ))}
+    </Slider>
   );
 };
 

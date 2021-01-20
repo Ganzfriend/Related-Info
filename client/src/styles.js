@@ -1,19 +1,13 @@
+/* eslint-disable-next-line arrow-body-style */
 const styles = ({ spacing, palette, breakpoints }) => {
-  // const primary1 = `${palette.primary.main}19`
-  // const secondary1 = `${palette.secondary.main}19`
-  const greyText = palette.grey[300];
+  // const primary1 = ;
   return (
     {
-      root: {
-        marginBottom: 12,
-        display: 'flex',
-        flexWrap: 'wrap',
-        // height: 275,
-        // width: 267,
+      arrows: {
+        display: 'block',
+        background: 'black',
+        fontSize: 50,
       },
-      // title: {
-      //   fontSize: 14,
-      // },
       bullet: {
         display: 'inline-block',
         margin: '0 2px',
@@ -21,36 +15,68 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       card: {
         margin: 15,
-        // maxWidth: 310,
-        // paddingBottom: 10,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
       },
+      container: {
+        marginLeft: 120,
+        marginRight: 120,
+        // position: 'relative',
+      },
       content: {
-        marginLeft: 5,
         maxWidth: 310,
         padding: 10,
       },
       description: {
-        fontStyle: 'italic',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
       },
-      notLiked: {
+      // dotBar: {
+      //   display: 'flex',
+      //   // flexDirection: 'row',
+      //   // justifyContent: 'center',
+      //   // alignItems: 'space-around',
+      //   listStyleType: 'none',
+      // },
+      // dots: {
+      //   display: 'flex',
+      //   // justifyContent: 'center',
+      //   // alignItems: 'space-between',
+      //   flexDirection: 'row',
+      //   // margin: 10,
+      // },
+      heart: {
         display: 'inline-block',
         filter: 'invert(1) saturate(15) hue-rotate(180deg)',
-        fontSize: 40,
-        marginLeft: '85%',
+        position: 'absolute',
+        top: 7,
+        right: 7,
       },
       liked: {
-        display: 'inline-block',
+        filter: 'none',
         color: 'red',
-        fontSize: 40,
-        marginLeft: '85%',
       },
       media: {
         height: 220,
         width: '100%',
-        marginBottom: 10,
         borderRadius: '8px',
+        position: 'relative',
+      },
+      price: {
+        fontWeight: 'bold',
+        marginRight: 4,
+      },
+      priceBox: {
+        display: 'flex',
+        alignItems: 'center',
+      },
+      reviewsBox: {
+        display: 'flex',
+        alignItems: 'center',
+      },
+      root: {
+        marginBottom: 50,
       },
       superhost: {
         display: 'inline-block',
@@ -59,9 +85,14 @@ const styles = ({ spacing, palette, breakpoints }) => {
         backgroundColor: 'white',
         border: '1px solid black',
         borderRadius: 6,
-        marginLeft: 15,
-        marginTop: 20,
         padding: '7px 8px',
+        position: 'absolute',
+        top: 7,
+        left: 7,
+      },
+      typeNumBedsBox: {
+        display: 'flex',
+        alignItems: 'center',
       },
     }
   );
