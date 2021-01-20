@@ -42,7 +42,7 @@ const ActivityCard = ({ activity }) => {
         <CardMedia
           className={classes.activityMedia}
           image={placeholderImageURL}
-          title="Click to find out more about your next activity!"
+          title="Click to find out more about your next adventure!"
         >
           <Box className={liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
             <FavoriteTwoToneIcon

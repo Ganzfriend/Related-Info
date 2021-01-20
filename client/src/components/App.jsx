@@ -45,7 +45,7 @@ const App = () => {
         ? (
           <Box>
             <h1>More places to stay</h1>
-            <Places city={city} homeInfo={homeInfo} getHomeData={getHomeData} />
+            <Places homeInfo={homeInfo} />
           </Box>
         )
         : <CardSkeletons />}
@@ -53,7 +53,7 @@ const App = () => {
         ? (
           <Box>
             <h1>Things to do nearby</h1>
-            <Activities city={city} activityInfo={activityInfo} getActivityData={getActivityData} />
+            <Activities activityInfo={activityInfo} />
           </Box>
         )
         : <CardSkeletons />}

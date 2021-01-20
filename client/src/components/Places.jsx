@@ -6,7 +6,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable-next-line import/extensions */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -15,7 +15,7 @@ import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
 
-const Places = ({ homeInfo, getHomeData }) => {
+const Places = ({ homeInfo }) => {
   const classes = useStyles();
 
   const responsive = {
@@ -46,7 +46,6 @@ const Places = ({ homeInfo, getHomeData }) => {
       { homeInfo.map((home) => (
         <HomeCard
           home={home}
-          classes={classes}
           key={home._id}
         />
       ))}

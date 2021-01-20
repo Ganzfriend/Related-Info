@@ -13,20 +13,10 @@ import 'react-multi-carousel/lib/styles.css';
 import ActivityCard from './ActivityCard';
 import styles from '../styles.js';
 
-const axios = require('axios');
-
 const useStyles = makeStyles(styles);
 
-const Activities = ({ activityInfo, getActivityData }) => {
+const Activities = ({ activityInfo }) => {
   const classes = useStyles();
-
-  const handleHeartClick = (activity) => {
-    const liked = !activity.liked;
-    /* could be improved to re-render only the specific card rather than the whole component */
-    axios.patch(`http://localhost:3000/activities/${activity._id}`, { liked })
-      .then(() => getActivityData())
-      .catch((err) => console.log(err));
-  };
 
   const responsive = {
     large: {
@@ -60,8 +50,6 @@ const Activities = ({ activityInfo, getActivityData }) => {
       { activityInfo.map((activity) => (
         <ActivityCard
           activity={activity}
-          handleHeartClick={handleHeartClick}
-          classes={classes}
           key={activity._id}
         />
       ))}
