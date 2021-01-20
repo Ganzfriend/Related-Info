@@ -24,16 +24,16 @@ const App = () => {
   const [activityInfo, setActivityInfo] = useState([]);
   const classes = useStyles();
 
+  const getActivityData = () => {
+    axios.get(`http://localhost:3000/activities/${city}`)
+      .then((response) => setActivityInfo(response.data))
+      .catch((err) => console.log(err));
+  };
+
   const getHomeData = () => {
     axios.get(`http://localhost:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .then(() => getActivityData())
-      .catch((err) => console.log(err));
-  };
-
-  const getActivityData = () => {
-    axios.get(`http://localhost:3000/activities/${city}`)
-      .then((response) => setActivityInfo(response.data))
       .catch((err) => console.log(err));
   };
 

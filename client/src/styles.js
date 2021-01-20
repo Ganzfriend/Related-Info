@@ -1,6 +1,5 @@
 /* eslint-disable-next-line arrow-body-style */
 const styles = ({ spacing, palette, breakpoints }) => {
-  // const primary1 = ;
   return (
     {
       activityCard: {
@@ -35,7 +34,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
       container: {
         marginLeft: 120,
         marginRight: 120,
-        // position: 'relative',
       },
       content: {
         maxWidth: 310,

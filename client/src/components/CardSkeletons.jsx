@@ -16,7 +16,7 @@ const CardSkeletons = () => {
       </Box>
       <Box className={classes.cardSkeletons}>
         {
-          [...Array(4)].map((i) => (
+          [...Array(4)].map((e, i) => (
             <Skeleton
               key={i}
               variant="rect"

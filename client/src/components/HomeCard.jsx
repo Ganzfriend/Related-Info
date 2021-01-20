@@ -1,5 +1,9 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/prop-types */
 /* eslint-disable-next-line import/extensions */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -9,9 +13,36 @@ import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import MouseOverPopover from './MouseOverPopover';
+import styles from '../styles.js';
 
-const HomeCard = ({home, classes, handleHeartClick}) => {
+const axios = require('axios');
+
+const useStyles = makeStyles(styles);
+
+const HomeCard = ({ home }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
+  const [liked, setLiked] = useState(false);
+  const classes = useStyles();
+
+  // const pluckHeartData = () => {
+  //   const heartData = [];
+  //   homeInfo.forEach((home) => {
+  //     const { _id, liked } = home;
+  //     heartData.push({ _id, liked });
+  //   });
+  //   setHeart(heartData);
+  // };
+
+  useEffect(() => setLiked(home.liked), [home.liked]);
+
+  const handleHeartClick = (clickedHomeId) => {
+    const newLiked = !liked;
+    axios.patch(`http://localhost:3000/homes/${clickedHomeId}`, { liked: newLiked })
+      .then(data => console.log('the data is', data))
+      .then(() => setLiked(!liked))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Card key={home._id} className={classes.card}>
       <CardActionArea>
@@ -20,10 +51,10 @@ const HomeCard = ({home, classes, handleHeartClick}) => {
           image={placeholderImageURL}
           title="Click to check out your new home!"
         >
-          {home.superhost ? <div className={classes.superhost}> SUPERHOST </div> : '' }
-          <Box className={home.liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
+          {home.superhost ? <Box className={classes.superhost}> SUPERHOST </Box> : '' }
+          <Box className={liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
             <FavoriteTwoToneIcon
-              onClick={() => { handleHeartClick(home); }}
+              onClick={() => { handleHeartClick(home._id); }}
             />
           </Box>
         </CardMedia>
@@ -37,7 +68,9 @@ const HomeCard = ({home, classes, handleHeartClick}) => {
           <Box className={classes.typeNumBedsBox}>
             <Typography>{home.type}</Typography>
             <Typography className={classes.bullet}> • </Typography>
-            <Typography> {`${home.beds} beds`} </Typography>
+            <Typography>
+              {`${home.beds} beds`}
+            </Typography>
           </Box>
           <MouseOverPopover
             className={classes.description}
