@@ -31,24 +31,6 @@ app.get('/activities/:city', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-// app.get('/activities/oakland', (req, res) => {
-//   Activity.find({city: 'Oakland, CA'})
-//     .then((data) => res.send(data))
-//     .catch((err) => res.send(err));
-// });
-
-// app.get('/activities/hollywood', (req, res) => {
-//   Activity.find({city: 'Hollywood, CA'})
-//     .then((data) => res.send(data))
-//     .catch((err) => res.send(err));
-// });
-
-// app.get('/activities/austin', (req, res) => {
-//   Activity.find({city: 'Austin, TX'})
-//     .then((data) => res.send(data))
-//     .catch((err) => res.send(err));
-// });
-
 ////////////////////////////////////////
 
 app.patch('/homes/:id', (req, res) => {

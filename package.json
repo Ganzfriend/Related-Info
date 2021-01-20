@@ -32,9 +32,7 @@
     "react-hot-loader": "^4.13.0",
     "react-material-ui-carousel": "^2.1.2",
     "react-multi-carousel": "^2.6.1",
-    "react-placeholder-image": "^0.1.8",
-    "react-slick": "^0.27.14",
-    "slick-carousel": "^1.8.1"
+    "react-placeholder-image": "^0.1.8"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
