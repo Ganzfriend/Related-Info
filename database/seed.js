@@ -3,10 +3,10 @@
 
 // stretch goal => add url prop to all homes,
 // sending to that home's endpoint & rendering in main component
+const db = require('mongoose');
 const sampleCities = require('./sampleData/sampleCities');
 const sampleHomes = require('./sampleData/sampleHomes');
 const sampleActivities = require('./sampleData/sampleActivities');
-const db = require('mongoose');
 const { City, Home, Activity } = require('./index');
 
 const insertSampleCities = () => {
