@@ -24,15 +24,6 @@ const HomeCard = ({ home }) => {
   const [liked, setLiked] = useState(false);
   const classes = useStyles();
 
-  // const pluckHeartData = () => {
-  //   const heartData = [];
-  //   homeInfo.forEach((home) => {
-  //     const { _id, liked } = home;
-  //     heartData.push({ _id, liked });
-  //   });
-  //   setHeart(heartData);
-  // };
-
   useEffect(() => setLiked(home.liked), [home.liked]);
 
   const handleHeartClick = (clickedHomeId) => {

@@ -1,7 +1,11 @@
+/* eslint-disable no-console */
+/* eslint-disable arrow-parens */
+/* eslint-disable import/extensions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 /* eslint-disable-next-line import/extensions */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -11,9 +15,27 @@ import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import MouseOverPopover from './MouseOverPopover';
+import styles from '../styles.js';
 
-const ActivityCard = ({ activity, classes, handleHeartClick }) => {
+const axios = require('axios');
+
+const useStyles = makeStyles(styles);
+
+const ActivityCard = ({ activity }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
+  const [liked, setLiked] = useState(false);
+  const classes = useStyles();
+
+  useEffect(() => setLiked(activity.liked), [activity.liked]);
+
+  const handleHeartClick = (clickedActivityId) => {
+    const newLiked = !liked;
+    axios.patch(`http://localhost:3000/activities/${clickedActivityId}`, { liked: newLiked })
+      .then(data => console.log('the data is', data))
+      .then(() => setLiked(!liked))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Card key={activity._id} className={classes.activityCard}>
       <CardActionArea>
@@ -22,9 +44,9 @@ const ActivityCard = ({ activity, classes, handleHeartClick }) => {
           image={placeholderImageURL}
           title="Click to find out more about your next activity!"
         >
-          <Box className={activity.liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
+          <Box className={liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
             <FavoriteTwoToneIcon
-              onClick={() => { handleHeartClick(activity); }}
+              onClick={() => { handleHeartClick(activity._id); }}
             />
           </Box>
         </CardMedia>
