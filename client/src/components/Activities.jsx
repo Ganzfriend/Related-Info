@@ -7,12 +7,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable-next-line import/extensions */
 import React from 'react';
-import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import ActivityCard from './ActivityCard';
 import styles from '../styles.js';
 
@@ -31,72 +28,35 @@ const Activities = ({ activityInfo, getActivityData }) => {
       .catch((err) => console.log(err));
   };
 
-  const SampleNextArrow = (props) => {
-    const { className, onClick } = props;
-    return (
-      <Box
-        className={className}
-        style={{ display: 'block', background: 'lightgray', borderRadius: 10 }}
-        onClick={onClick}
-      />
-    );
-  };
-
-  const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <Box
-        className={className}
-        content={<ArrowBackIosIcon />}
-        style={{ ...style, display: 'block', background: 'gray', borderRadius: 10 }}
-        onClick={onClick}
-      />
-    );
-  };
-
-  const settings = {
-    dots: false,
-    // dotsClass: 'dots',
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    // focusOnSelect: true,
-    variableWidth: true,
-    adaptiveHeight: true,
-    initialSlide: 0,
-    nextArrow: <SampleNextArrow className={classes.arrows} onClick={Slider.slickNext} />,
-    prevArrow: <SamplePrevArrow className={classes.arrows} onClick={Slider.slickNext} />,
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: {
-    //       slidesToShow: 3,
-    //       slidesToScroll: 3,
-    //       infinite: true,
-    //       dots: true,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 600,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 2,
-    //       initialSlide: 2,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 480,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    // ],
+  const responsive = {
+    large: {
+      breakpoint: { max: 3000, min: 1500 },
+      items: 5,
+      slidesToSlide: 5,
+    },
+    medium: {
+      breakpoint: { max: 1500, min: 1200 },
+      items: 4,
+      slidesToSlide: 4,
+    },
+    small: {
+      breakpoint: { max: 1200, min: 900 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    xsmall: {
+      breakpoint: { max: 900, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
   };
 
   return (
-    <Slider className={classes.activitySlider} {...settings}>
+    <Carousel
+      className={classes.activitySlider}
+      responsive={responsive}
+      infinite
+    >
       { activityInfo.map((activity) => (
         <ActivityCard
           activity={activity}
@@ -105,7 +65,7 @@ const Activities = ({ activityInfo, getActivityData }) => {
           key={activity._id}
         />
       ))}
-    </Slider>
+    </Carousel>
   );
 };
 

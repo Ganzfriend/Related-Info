@@ -32,23 +32,27 @@ const Places = ({ homeInfo, getHomeData }) => {
     large: {
       breakpoint: { max: 3000, min: 1500 },
       items: 4,
+      slidesToSlide: 4,
     },
     medium: {
       breakpoint: { max: 1500, min: 1200 },
       items: 3,
+      slidesToSlide: 3,
     },
     small: {
       breakpoint: { max: 1200, min: 900 },
       items: 2,
+      slidesToSlide: 2,
     },
     xsmall: {
-      breakpoint: { max: 900 },
+      breakpoint: { max: 900, min: 0 },
       items: 1,
+      slidesToSlide: 1,
     },
   };
 
   return (
-    <Carousel className={classes.root} responsive={responsive} showDots infinite>
+    <Carousel className={classes.root} responsive={responsive} infinite>
       { homeInfo.map((home) => (
         <HomeCard
           home={home}
