@@ -4,10 +4,9 @@ const styles = ({ spacing, palette, breakpoints }) => {
   return (
     {
       activityCard: {
-        margin: 0,
+        margin: 15,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
-        width: '80%',
       },
       activityMedia: {
         height: 320,
@@ -17,7 +16,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       activitySlider: {
         marginBottom: 50,
-        // width: '80%',
       },
       bullet: {
         display: 'inline-block',
