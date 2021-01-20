@@ -1,12 +1,20 @@
 /* eslint-disable-next-line arrow-body-style */
 const styles = ({ spacing, palette, breakpoints }) => {
-  // const primary1 = ;
   return (
     {
-      arrows: {
-        display: 'block',
-        background: 'black',
-        fontSize: 50,
+      activityCard: {
+        margin: 15,
+        borderRadius: '8px',
+        variant: 'rgb(255, 0, 0) dashed',
+      },
+      activityMedia: {
+        height: 320,
+        width: '100%',
+        borderRadius: '8px',
+        position: 'relative',
+      },
+      activitySlider: {
+        marginBottom: 50,
       },
       bullet: {
         display: 'inline-block',
@@ -18,10 +26,17 @@ const styles = ({ spacing, palette, breakpoints }) => {
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
       },
+      cardSkeletons: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+      },
+      carouselButtonGroup: {
+        position: 'absolute',
+      },
       container: {
         marginLeft: 120,
         marginRight: 120,
-        // position: 'relative',
       },
       content: {
         maxWidth: 310,
@@ -32,20 +47,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
       },
-      // dotBar: {
-      //   display: 'flex',
-      //   // flexDirection: 'row',
-      //   // justifyContent: 'center',
-      //   // alignItems: 'space-around',
-      //   listStyleType: 'none',
-      // },
-      // dots: {
-      //   display: 'flex',
-      //   // justifyContent: 'center',
-      //   // alignItems: 'space-between',
-      //   flexDirection: 'row',
-      //   // margin: 10,
-      // },
       heart: {
         display: 'inline-block',
         filter: 'invert(1) saturate(15) hue-rotate(180deg)',
@@ -77,6 +78,13 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       root: {
         marginBottom: 50,
+        position: 'relative',
+      },
+      skeleton: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        margin: 20,
       },
       superhost: {
         display: 'inline-block',
