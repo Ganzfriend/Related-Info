@@ -4,7 +4,6 @@ const path = require('path');
 
 const config = {
   entry: [
-    'react-hot-loader/patch',
     './client/src/index.jsx',
   ],
   output: {
@@ -55,9 +54,12 @@ const config = {
       '.js',
       '.jsx',
     ],
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
+    modules: [
+      'node_modules',
+      'bower_components',
+      'shared',
+      '/shared/vendor/modules',
+    ],
   },
   devServer: {
     contentBase: './dist',

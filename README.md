@@ -4,7 +4,6 @@
 
 * To start app, run:
   * npm install
-  * yarn install
   * npm run react-dev
   * npm run seed (to connect to database and populate with dummy data)
   * npm start (server will be running on localhost:3000)
