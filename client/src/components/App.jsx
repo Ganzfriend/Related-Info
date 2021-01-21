@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
 import React, {useState, useEffect} from 'react';
-import { hot } from 'react-hot-loader/root';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Places from './Places';
@@ -61,4 +60,4 @@ const App = () => {
   );
 };
 
-export default hot(App);
+export default App;
