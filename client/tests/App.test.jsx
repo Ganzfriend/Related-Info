@@ -26,6 +26,13 @@ const server = setupServer(
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
+/* Other test ideas:
+check for skeleton load
+check for superhost tag
+check for change of className/color when heart is clicked
+check for change on arrow click
+check for pop up when mouse hovers over description
+*/
 
 describe('App', () => {
   test('renders App component', async () => {
