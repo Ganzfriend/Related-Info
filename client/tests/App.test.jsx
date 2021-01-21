@@ -13,8 +13,9 @@ import {
   render, waitFor, screen, fireEvent,
 } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-// import Box from '@material-ui/core/Box';
 import App from '../src/components/App';
+import Places from '../src/components/Places';
+import { sampleHome } from './mockData';
 
 const city = 'Seattle, WA';
 
@@ -26,10 +27,20 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-// jest.useFakeTimers();
-test('renders App component', async () => {
-  render(<App />);
-  await waitFor(() => screen.queryAllByRole('div'));
+describe('App', () => {
+  test('renders App component', async () => {
+    render(<App />);
+    await waitFor(() => screen.queryAllByRole('div'));
+  });
+});
+
+describe('Places', () => {
+  test('Places renders a DOM', () => {
+    const { queryAllByRole } = render(
+      <Places homeInfo={sampleHome} />,
+    );
+    expect(queryAllByRole('div')).toBeTruthy();
+  });
 });
 
 /*

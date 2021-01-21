@@ -1,7 +1,3 @@
-import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import Places from '../src/components/Places';
-
 const sampleHome = [{
   _id: 0,
   image: 'https://related-info-images.s3-us-west-2.amazonaws.com/andrea-davis-FHWCM78j66g-unsplash.jpg',
@@ -16,11 +12,4 @@ const sampleHome = [{
   url: 'https://www.google.com',
 }];
 
-describe('Places', () => {
-  test('Places renders a DOM', () => {
-    const { queryAllByRole } = render(
-      <Places homeInfo={sampleHome} />,
-    );
-    expect(queryAllByRole('div')).toBeTruthy();
-  });
-});
+module.exports = { sampleHome };
