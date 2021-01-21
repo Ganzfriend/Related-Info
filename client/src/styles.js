@@ -34,6 +34,20 @@ const styles = ({ spacing, palette, breakpoints }) => {
       carouselButtonGroup: {
         position: 'absolute',
       },
+      cities: {
+        // fontSize: 18,
+      },
+      cityList: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: 100,
+      },
+      // cityListSkeletons: {
+      //   display: 'flex',
+      //   flexDirection: 'row',
+      //   justifyContent: 'center',
+      // },
       container: {
         marginLeft: 120,
         marginRight: 120,
