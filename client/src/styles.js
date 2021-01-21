@@ -14,7 +14,14 @@ const styles = ({ spacing, palette, breakpoints }) => {
         position: 'relative',
       },
       activitySlider: {
-        marginBottom: 50,
+        marginBottom: 30,
+        position: 'relative',
+      },
+      arrow: {
+        boxShadow: 'rgba(0, 0, 0, 0) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 3px, rgba(0, 0, 0, 0.12) 0px 4px 10px 0px',
+        borderRadius: '50%',
+        height: 30,
+        width: 30,
       },
       bullet: {
         display: 'inline-block',
@@ -33,6 +40,13 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       carouselButtonGroup: {
         position: 'absolute',
+        top: -5,
+        left: '90%',
+      },
+      carouselButtonGroup2: {
+        position: 'absolute',
+        top: '42%',
+        left: '90%',
       },
       cities: {
         // fontSize: 18,
@@ -43,14 +57,10 @@ const styles = ({ spacing, palette, breakpoints }) => {
         justifyContent: 'space-around',
         marginBottom: 100,
       },
-      // cityListSkeletons: {
-      //   display: 'flex',
-      //   flexDirection: 'row',
-      //   justifyContent: 'center',
-      // },
       container: {
         marginLeft: 120,
         marginRight: 120,
+        position: 'relative',
       },
       content: {
         maxWidth: 310,
@@ -67,6 +77,10 @@ const styles = ({ spacing, palette, breakpoints }) => {
         position: 'absolute',
         top: 7,
         right: 7,
+      },
+      homeSlider: {
+        marginBottom: 30,
+        position: 'relative',
       },
       liked: {
         filter: 'none',
@@ -89,10 +103,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
       reviewsBox: {
         display: 'flex',
         alignItems: 'center',
-      },
-      root: {
-        marginBottom: 50,
-        position: 'relative',
       },
       skeleton: {
         display: 'flex',
