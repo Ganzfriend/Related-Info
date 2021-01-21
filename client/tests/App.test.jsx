@@ -30,7 +30,19 @@ afterAll(() => server.close());
 describe('App', () => {
   test('renders App component', async () => {
     render(<App />);
-    await waitFor(() => screen.queryAllByRole('div'));
+    await waitFor(() => screen.queryAllByRole('span'));
+  });
+
+  test('loads items eventually', async () => {
+    render(<App />);
+    // Wait for page to update with query text
+    const items = await screen.queryAllByRole('div');
+    expect(items).toBeTruthy();
+  });
+
+  test('show superhost tag on home cards', async () => {
+    render(<App />);
+    await waitFor(() => screen.queryAllByText('SUPERHOST'));
   });
 });
 
@@ -43,24 +55,6 @@ describe('Places', () => {
   });
 });
 
-/*
-const city = 'Seattle, WA';
-
-const server = setupServer(
-  rest.get(`/homes/${city}`, (req, res, ctx) => res(ctx.json({ greeting: 'hello there' }))),
-);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
-
-test('loads items eventually', async () => {
-  render(<App />);
-
-  // Wait for page to update with query text
-  const items = await screen.findAllByText(/Item #[0-9]: /);
-  expect(items).toHaveLength(10);
-});
 /*
 test('displays skeletons when no data has loaded', async () => {
   render(<App />);
