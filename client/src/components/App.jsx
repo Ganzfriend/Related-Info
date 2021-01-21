@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Places from './Places';
@@ -13,7 +13,7 @@ const useStyles = makeStyles(styles);
 
 const App = () => {
   /*
-  seattle won't be the default once everything is set up, just for now
+  seattle won't be the default once everything is set up, just for now.
   maybe instead of nearby cities at the bottom, list out the four city options,
   so user can toggle between
   on click of city, we would call setCity on that value
