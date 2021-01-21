@@ -39,7 +39,6 @@ const App = () => {
   };
 
   const getHomeData = () => {
-    console.log('getHomeData is getting triggered!');
     axios.get(`http://localhost:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .then(() => getActivityData())
