@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable arrow-parens */
 /* eslint-disable import/extensions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
@@ -19,33 +21,32 @@ const axios = require('axios');
 
 const useStyles = makeStyles(styles);
 
-const HomeCard = ({ home }) => {
+const ActivityCard = ({ activity }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
   const [liked, setLiked] = useState(false);
   const classes = useStyles();
 
-  useEffect(() => setLiked(home.liked), [home.liked]);
+  useEffect(() => setLiked(activity.liked), [activity.liked]);
 
-  const handleHeartClick = (clickedHomeId) => {
+  const handleHeartClick = (clickedActivityId) => {
     const newLiked = !liked;
-    axios.patch(`http://localhost:3000/homes/${clickedHomeId}`, { liked: newLiked })
-      .then(data => console.log('the data is', data))
+    axios.patch(`http://localhost:3000/activities/${clickedActivityId}`, { liked: newLiked })
+      // .then(data => console.log('the data is', data))
       .then(() => setLiked(!liked))
       .catch((err) => console.log(err));
   };
 
   return (
-    <Card key={home._id} className={classes.card}>
+    <Card key={activity._id} className={classes.activityCard}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
+          className={classes.activityMedia}
           image={placeholderImageURL}
-          title="Click to check out your new home!"
+          title="Click to find out more about your next adventure!"
         >
-          {home.superhost ? <Box className={classes.superhost}> SUPERHOST </Box> : '' }
           <Box className={liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
             <FavoriteTwoToneIcon
-              onClick={() => { handleHeartClick(home._id); }}
+              onClick={() => { handleHeartClick(activity._id); }}
             />
           </Box>
         </CardMedia>
@@ -53,23 +54,16 @@ const HomeCard = ({ home }) => {
           <Box className={classes.reviewsBox}>
             <StarRateIcon style={{ color: 'red' }} />
             <Typography style={{ color: 'gray' }}>
-              {home.reviews > 0 ? `${home.reviews} reviews` : 'New'}
-            </Typography>
-          </Box>
-          <Box className={classes.typeNumBedsBox}>
-            <Typography>{home.type}</Typography>
-            <Typography className={classes.bullet}> • </Typography>
-            <Typography>
-              {`${home.beds} beds`}
+              {activity.reviews > 0 ? `${activity.reviews} reviews` : 'New'}
             </Typography>
           </Box>
           <MouseOverPopover
             className={classes.description}
-            description={home.description}
+            description={activity.description}
           />
           <Box className={classes.priceBox}>
-            <Typography className={classes.price}>{`$${home.price}`}</Typography>
-            <Typography> / night </Typography>
+            <Typography className={classes.price}>{`From $${activity.price}`}</Typography>
+            <Typography> / person </Typography>
           </Box>
         </Box>
       </CardActionArea>
@@ -77,4 +71,4 @@ const HomeCard = ({ home }) => {
   );
 };
 
-export default HomeCard;
+export default ActivityCard;

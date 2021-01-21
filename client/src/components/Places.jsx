@@ -7,123 +7,74 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable-next-line import/extensions */
 import React from 'react';
-import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import Box from '@material-ui/core/Box';
+import { IconButton } from '@material-ui/core';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeCard from './HomeCard';
 import styles from '../styles.js';
 
-const axios = require('axios');
-
 const useStyles = makeStyles(styles);
 
-const Places = ({ homeInfo, getHomeData }) => {
+const Places = ({ homeInfo }) => {
   const classes = useStyles();
 
-  const handleHeartClick = (home) => {
-    const liked = !home.liked;
-    /* could be improved to re-render only the specific card rather than the whole component */
-    axios.patch(`http://localhost:3000/homes/${home._id}`, { liked })
-      .then(() => getHomeData())
-      .catch((err) => console.log(err));
-  };
-
-  const SampleNextArrow = (props) => {
-    const { className, onClick } = props;
+  const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
+    const { carouselState: { currentSlide } } = rest;
     return (
-      <Box
-        className={className}
-        style={{ display: 'block', background: 'lightgray', borderRadius: 10, fontSize: 50 }}
-        onClick={onClick}
-      />
+      <Box className="carouselButtonGroup">
+        <IconButton className={currentSlide === 0 ? 'disable' : ''} onClick={() => previous()}>
+          <NavigateBeforeIcon />
+        </IconButton>
+        <IconButton onClick={() => next()}>
+          <NavigateNextIcon />
+        </IconButton>
+      </Box>
     );
   };
 
-  const SamplePrevArrow = (props) => {
-    const { className, onClick } = props;
-    return (
-      <Box
-        className={className}
-        style={{ display: 'block', background: 'gray', borderRadius: 10 }}
-        onClick={onClick}
-      />
-    );
-  };
-
-  const settings = {
-    dots: false,
-    // dotsClass: 'dots',
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    // focusOnSelect: true,
-    variableWidth: true,
-    adaptiveHeight: true,
-    // initialSlide: 0,
-    nextArrow: <SampleNextArrow className={classes.arrows} onClick={Slider.slickNext} />,
-    prevArrow: <SamplePrevArrow className={classes.arrows} onClick={Slider.slickPrev} />,
-    // appendDots: dots => (
-    //   <Box
-    //     style={{
-    //       position: 'auto',
-    //       backgroundColor: '#ddd',
-    //       display: 'flex',
-    //       flexDirection: 'row',
-    //       justifyContent: 'center',
-    //       alignItems: 'center',
-    //       borderRadius: 50,
-    //       padding: 10,
-    //       width: 1,
-    //       height: 1,
-    //       boxShadow: 'inset 0 1px 1px 0 #999',
-    //       margin: 0,
-    //     }}
-    //   >
-    //     <ul className={classes.dotBar}> {dots} </ul>
-    //   </Box>
-    // ),
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  const responsive = {
+    large: {
+      breakpoint: { max: 3000, min: 1500 },
+      items: 4,
+      slidesToSlide: 4,
+    },
+    medium: {
+      breakpoint: { max: 1500, min: 1200 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    small: {
+      breakpoint: { max: 1200, min: 900 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    xsmall: {
+      breakpoint: { max: 900, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
   };
 
   return (
-    <Slider className={classes.root} {...settings}>
+    <Carousel
+      className={classes.root}
+      responsive={responsive}
+      infinite
+      renderButtonGroupOutside
+      arrows={false}
+      customButtonGroup={<ButtonGroup />}
+    >
       { homeInfo.map((home) => (
         <HomeCard
           home={home}
-          handleHeartClick={handleHeartClick}
-          classes={classes}
           key={home._id}
         />
       ))}
-    </Slider>
+    </Carousel>
   );
 };
 
