@@ -39,6 +39,7 @@ const App = () => {
   };
 
   const getHomeData = () => {
+    console.log('getHomeData is getting triggered!');
     axios.get(`http://localhost:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .then(() => getActivityData())
@@ -46,7 +47,7 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { getHomeData(); }, []);
+  useEffect(() => { getHomeData(); }, [city]);
 
   return (
     <Box className={classes.container}>

@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
@@ -12,20 +13,16 @@ const useStyles = makeStyles(styles);
 
 const CityList = ({ cities, setCity }) => {
   const classes = useStyles();
-  // const preventDefault = (event) => event.preventDefault();
   return (
     <Box className={classes.cityList}>
-      { cities.map((city) => {
-        const url = `/homes/${city.name}`;
-        return (
-          <Typography key={city._id} className={classes.cities}>
-            <Button href="#" onClick={() => { setCity(city.name); }}>
-              {city.name}
-            </Button>
-          </Typography>
+      { cities.map(city => (
+        <Typography key={city._id} className={classes.cities}>
+          <Button href="#" onClick={() => { setCity(city.name); }}>
+            {city.name}
+          </Button>
+        </Typography>
 
-        );
-      })}
+      ))}
     </Box>
   );
 };
