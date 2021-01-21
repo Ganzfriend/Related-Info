@@ -57,7 +57,15 @@ const config = {
     ],
     alias: {
       'react-dom': '@hot-loader/react-dom',
+      config$: './configs/app-config.js',
+      react: './vendor/react-master',
     },
+    modules: [
+      'node_modules',
+      'bower_components',
+      'shared',
+      '/shared/vendor/modules',
+    ],
   },
   devServer: {
     contentBase: './dist',

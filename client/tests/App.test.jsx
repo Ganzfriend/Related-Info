@@ -1,18 +1,38 @@
 /* eslint-disable no-undef */
-// __tests__/App.test.js
+// tests/App.test.js
 /**
  * @test-environment jsdom
  */
-import 'jsdom-global/register';
+// import 'jsdom-global/register';
+import '@testing-library/jest-dom/extend-expect';
+import 'regenerator-runtime/runtime';
 import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { waitFor, screen } from '@testing-library/react';
+import {
+  render, waitFor, screen, fireEvent,
+} from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom/extend-expect';
-import { render, fireEvent } from './test-utils';
+// import Box from '@material-ui/core/Box';
 import App from '../src/components/App';
 
+const city = 'Seattle, WA';
+
+const server = setupServer(
+  rest.get(`/homes/${city}`, (req, res, ctx) => res(ctx.json({ greeting: 'hello there' }))),
+);
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+// jest.useFakeTimers();
+test('renders App component', async () => {
+  render(<App />);
+  await waitFor(() => screen.queryAllByRole('div'));
+});
+
+/*
 const city = 'Seattle, WA';
 
 const server = setupServer(
@@ -26,14 +46,11 @@ afterAll(() => server.close());
 test('loads items eventually', async () => {
   render(<App />);
 
-  // Click button
-  fireEvent.click(getByText('Load'));
-
   // Wait for page to update with query text
   const items = await screen.findAllByText(/Item #[0-9]: /);
   expect(items).toHaveLength(10);
 });
-
+/*
 test('displays skeletons when no data has loaded', async () => {
   render(<App />);
 
@@ -120,3 +137,4 @@ test('handles login exception', () => {
   expect(alert).toHaveTextContent(/sorry, something went wrong/i);
   expect(window.sessionStorage.getItem('token')).toBeNull();
 });
+*/
