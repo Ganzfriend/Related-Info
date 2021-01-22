@@ -45,10 +45,10 @@ describe('App', () => {
   //   expect(queryByRole('div')).toBeTruthy();
   // });
   // it('updates on change', () => {
-  //   const {queryByText} = render(<App />);
-  //   const description = queryByText('ghost');
+  //   const {queryByRole} = render(<App />);
+  //   const description = queryByRole('button');
   //   fireEvent.change(description, { target: { value: 'value' } });
-  //   expect(description.value).toBeNull();
+  //   expect(description.value).not.toBe('ghost');
   // });
 
   test('loads items eventually', async () => {
