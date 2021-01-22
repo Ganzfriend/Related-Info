@@ -49,7 +49,7 @@ const App = () => {
   useEffect(() => { getHomeData(); }, [city]);
 
   return (
-    <Box className={classes.container}>
+    <Box className={classes.relatedInfo}>
       { homeInfo.length
         ? (
           <Box>
