@@ -1,29 +1,39 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-underscore-dangle */
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-const {City, Home, Activity} = require('../database/index.js');
+const { City, Home, Activity } = require('../database/index.js');
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-/* clean this file up using express router, or separate out into other files */
+////////////////////////////////////////
+
+app.get('/cities', (req, res) => {
+  City.find({})
+    .then(data => res.send(data))
+    .catch(err => res.send(err));
+});
+
+////////////////////////////////////////
 
 app.get('/homes/:city', (req, res) => {
   const { city } = req.params;
-  Home.find({city})
+  Home.find({ city })
     .then((data) => res.send(data))
     .catch((err) => res.send(err));
 });
 
 ////////////////////////////////////////
+
 app.get('/activities/:city', (req, res) => {
   const { city } = req.params;
   Activity.find({ city })
