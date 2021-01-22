@@ -25,12 +25,12 @@ const Places = ({ homeInfo }) => {
   const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
     const { carouselState: { currentSlide } } = rest;
     return (
-      <Box className="carouselButtonGroup">
+      <Box className={classes.carouselButtonGroup}>
         <IconButton className={currentSlide === 0 ? 'disable' : ''} onClick={() => previous()}>
-          <NavigateBeforeIcon />
+          <NavigateBeforeIcon className={classes.arrow} />
         </IconButton>
         <IconButton onClick={() => next()}>
-          <NavigateNextIcon />
+          <NavigateNextIcon className={classes.arrow} />
         </IconButton>
       </Box>
     );
@@ -61,7 +61,7 @@ const Places = ({ homeInfo }) => {
 
   return (
     <Carousel
-      className={classes.root}
+      containerClass={classes.homeSlider}
       responsive={responsive}
       infinite
       renderButtonGroupOutside

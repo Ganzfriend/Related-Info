@@ -7,22 +7,21 @@ import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
 
-const CardSkeletons = () => {
+const CityListSkeletons = () => {
   const classes = useStyles();
   return (
     <Box>
       <Box>
-        <Skeleton variant="text" height={50} width={300} />
+        <Skeleton variant="text" height={50} width={500} />
       </Box>
-      <Box className={classes.cardSkeletons}>
+      <Box className={classes.cityList}>
         {
           [...Array(4)].map((e, i) => (
             <Skeleton
               key={i}
-              variant="rect"
-              width="25%"
-              height={250}
-              className={classes.skeleton}
+              variant="text"
+              width={100}
+              height={50}
             />
           ))
         }
@@ -31,4 +30,4 @@ const CardSkeletons = () => {
   );
 };
 
-export default CardSkeletons;
+export default CityListSkeletons;
