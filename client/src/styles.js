@@ -57,11 +57,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
         justifyContent: 'space-around',
         marginBottom: 100,
       },
-      container: {
-        marginLeft: 120,
-        marginRight: 120,
-        position: 'relative',
-      },
       content: {
         maxWidth: 310,
         padding: 10,
@@ -99,6 +94,12 @@ const styles = ({ spacing, palette, breakpoints }) => {
       priceBox: {
         display: 'flex',
         alignItems: 'center',
+      },
+      relatedInfo: {
+        marginLeft: 120,
+        marginRight: 120,
+        position: 'relative',
+        backgroundColor: '#F7F7F7',
       },
       reviewsBox: {
         display: 'flex',
