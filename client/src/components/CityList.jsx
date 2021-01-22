@@ -17,7 +17,7 @@ const CityList = ({ cities, setCity }) => {
     <Box className={classes.cityList}>
       { cities.map(city => (
         <Typography key={city._id} className={classes.cities}>
-          <Button href="#" onClick={() => { setCity(city.name); }}>
+          <Button href="#" onClick={() => setCity(city.name)}>
             {city.name}
           </Button>
         </Typography>
