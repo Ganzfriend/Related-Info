@@ -40,6 +40,17 @@ describe('App', () => {
     await waitFor(() => screen.queryAllByRole('span'));
   });
 
+  // test('renders App component', () => {
+  //   const {queryByRole} = render(<App />);
+  //   expect(queryByRole('div')).toBeTruthy();
+  // });
+  // it('updates on change', () => {
+  //   const {queryByRole} = render(<App />);
+  //   const description = queryByRole('button');
+  //   fireEvent.change(description, { target: { value: 'value' } });
+  //   expect(description.value).not.toBe('ghost');
+  // });
+
   test('loads items eventually', async () => {
     render(<App />);
     // Wait for page to update with query text

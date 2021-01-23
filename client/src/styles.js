@@ -17,18 +17,18 @@ const styles = ({ spacing, palette, breakpoints }) => {
         marginBottom: 30,
         position: 'relative',
       },
-      arrow: {
+      relatedInfoArrow: {
         boxShadow: 'rgba(0, 0, 0, 0) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 3px, rgba(0, 0, 0, 0.12) 0px 4px 10px 0px',
         borderRadius: '50%',
-        height: 30,
-        width: 30,
+        height: 40,
+        width: 40,
       },
-      bullet: {
+      relatedInfoBullet: {
         display: 'inline-block',
         margin: '0 2px',
         transform: 'scale(0.8)',
       },
-      card: {
+      relatedInfoCard: {
         margin: 15,
         borderRadius: '8px',
         variant: 'rgb(255, 0, 0) dashed',
@@ -40,13 +40,13 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       carouselButtonGroup: {
         position: 'absolute',
-        top: -5,
-        left: '90%',
+        top: '2.5%',
+        left: '88%',
       },
       carouselButtonGroup2: {
         position: 'absolute',
         top: '42%',
-        left: '90%',
+        left: '88%',
       },
       cities: {
         // fontSize: 18,
@@ -55,18 +55,17 @@ const styles = ({ spacing, palette, breakpoints }) => {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginBottom: 100,
       },
-      content: {
+      relatedInfoContent: {
         maxWidth: 310,
         padding: 10,
       },
-      description: {
+      relatedInfoCardDescription: {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
       },
-      heart: {
+      relatedInfoHeart: {
         display: 'inline-block',
         filter: 'invert(1) saturate(15) hue-rotate(180deg)',
         position: 'absolute',
@@ -77,41 +76,41 @@ const styles = ({ spacing, palette, breakpoints }) => {
         marginBottom: 30,
         position: 'relative',
       },
-      liked: {
+      relatedInfoliked: {
         filter: 'none',
         color: 'red',
       },
-      media: {
+      relatedInfoMedia: {
         height: 220,
         width: '100%',
         borderRadius: '8px',
         position: 'relative',
       },
-      price: {
+      relatedInfoPrice: {
         fontWeight: 'bold',
         marginRight: 4,
       },
-      priceBox: {
+      relatedInfoPriceBox: {
         display: 'flex',
         alignItems: 'center',
       },
       relatedInfo: {
-        marginLeft: 120,
-        marginRight: 120,
+        padding: '30px 5px',
         position: 'relative',
         backgroundColor: '#F7F7F7',
+        marginBottom: 30,
       },
-      reviewsBox: {
+      relatedInfoReviewsBox: {
         display: 'flex',
         alignItems: 'center',
       },
-      skeleton: {
+      relatedInfoSkeleton: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         margin: 20,
       },
-      superhost: {
+      relatedInfoSuperhost: {
         display: 'inline-block',
         color: 'black',
         fontWeight: 'bold',

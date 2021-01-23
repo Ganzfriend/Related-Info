@@ -44,25 +44,25 @@ const ActivityCard = ({ activity }) => {
           image={placeholderImageURL}
           title="Click to find out more about your next adventure!"
         >
-          <Box className={liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
+          <Box className={liked ? `${classes.relatedInfoHeart} ${classes.relatedInfoliked}` : classes.relatedInfoHeart}>
             <FavoriteTwoToneIcon
               onClick={() => { handleHeartClick(activity._id); }}
             />
           </Box>
         </CardMedia>
-        <Box className={classes.content}>
-          <Box className={classes.reviewsBox}>
+        <Box className={classes.relatedInfoContent}>
+          <Box className={classes.relatedInfoReviewsBox}>
             <StarRateIcon style={{ color: 'red' }} />
             <Typography style={{ color: 'gray' }}>
               {activity.reviews > 0 ? `${activity.reviews} reviews` : 'New'}
             </Typography>
           </Box>
           <MouseOverPopover
-            className={classes.description}
+            className={classes.relatedInfoCardDescription}
             description={activity.description}
           />
-          <Box className={classes.priceBox}>
-            <Typography className={classes.price}>{`From $${activity.price}`}</Typography>
+          <Box className={classes.relatedInfoPriceBox}>
+            <Typography className={classes.relatedInfoPrice}>{`From $${activity.price}`}</Typography>
             <Typography> / person </Typography>
           </Box>
         </Box>

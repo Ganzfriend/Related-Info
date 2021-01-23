@@ -53,7 +53,7 @@ const App = () => {
       { homeInfo.length
         ? (
           <Box>
-            <h1>More places to stay</h1>
+            <h2>More places to stay</h2>
             <Places homeInfo={homeInfo} />
           </Box>
         )
@@ -61,7 +61,7 @@ const App = () => {
       { activityInfo.length
         ? (
           <Box>
-            <h1>Things to do nearby</h1>
+            <h2>Things to do nearby</h2>
             <Activities activityInfo={activityInfo} />
           </Box>
         )
@@ -69,7 +69,7 @@ const App = () => {
       { cities.length
         ? (
           <Box>
-            <h1>Explore other options in another city</h1>
+            <h2>Explore other options in another city</h2>
             <CityList cities={cities} setCity={setCity} />
           </Box>
         )
