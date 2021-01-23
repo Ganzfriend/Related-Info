@@ -27,10 +27,10 @@ const Activities = ({ activityInfo }) => {
     return (
       <Box className={classes.carouselButtonGroup2}>
         <IconButton className={currentSlide === 0 ? 'disable' : ''} onClick={() => previous()}>
-          <NavigateBeforeIcon className={classes.arrow} />
+          <NavigateBeforeIcon className={classes.relatedInfoArrow} />
         </IconButton>
         <IconButton onClick={() => next()}>
-          <NavigateNextIcon className={classes.arrow} />
+          <NavigateNextIcon className={classes.relatedInfoArrow} />
         </IconButton>
       </Box>
     );
