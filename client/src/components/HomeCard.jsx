@@ -35,22 +35,22 @@ const HomeCard = ({ home }) => {
   };
 
   return (
-    <Card key={home._id} className={classes.card}>
+    <Card key={home._id} className={classes.relatedInfoCard}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
+          className={classes.relatedInfoMedia}
           image={placeholderImageURL}
           title="Click to check out your new home!"
         >
-          {home.superhost ? <Box className={classes.superhost}> SUPERHOST </Box> : '' }
-          <Box className={liked ? `${classes.heart} ${classes.liked}` : classes.heart}>
+          {home.superhost ? <Box className={classes.relatedInfoSuperhost}> SUPERHOST </Box> : '' }
+          <Box className={liked ? `${classes.relatedInfoHeart} ${classes.relatedInfoliked}` : classes.relatedInfoHeart}>
             <FavoriteTwoToneIcon
               onClick={() => { handleHeartClick(home._id); }}
             />
           </Box>
         </CardMedia>
-        <Box className={classes.content}>
-          <Box className={classes.reviewsBox}>
+        <Box className={classes.relatedInfoContent}>
+          <Box className={classes.relatedInfoReviewsBox}>
             <StarRateIcon style={{ color: 'red' }} />
             <Typography style={{ color: 'gray' }}>
               {home.reviews > 0 ? `${home.reviews} reviews` : 'New'}
@@ -58,17 +58,17 @@ const HomeCard = ({ home }) => {
           </Box>
           <Box className={classes.typeNumBedsBox}>
             <Typography>{home.type}</Typography>
-            <Typography className={classes.bullet}> • </Typography>
+            <Typography className={classes.relatedInfoBullet}> • </Typography>
             <Typography>
               {`${home.beds} beds`}
             </Typography>
           </Box>
           <MouseOverPopover
-            className={classes.description}
+            className={classes.relatedInfoCardDescription}
             description={home.description}
           />
-          <Box className={classes.priceBox}>
-            <Typography className={classes.price}>{`$${home.price}`}</Typography>
+          <Box className={classes.relatedInfoPriceBox}>
+            <Typography className={classes.relatedInfoPrice}>{`$${home.price}`}</Typography>
             <Typography> / night </Typography>
           </Box>
         </Box>

@@ -22,7 +22,7 @@ const CardSkeletons = () => {
               variant="rect"
               width="25%"
               height={250}
-              className={classes.skeleton}
+              className={classes.relatedInfoSkeleton}
             />
           ))
         }
