@@ -40,13 +40,13 @@ const styles = ({ spacing, palette, breakpoints }) => {
       },
       carouselButtonGroup: {
         position: 'absolute',
-        top: '2.5%',
-        left: '88%',
+        top: '2%',
+        left: '85%',
       },
       carouselButtonGroup2: {
         position: 'absolute',
-        top: '42%',
-        left: '88%',
+        top: '39%',
+        left: '85%',
       },
       cities: {
         textDecoration: 'none',
