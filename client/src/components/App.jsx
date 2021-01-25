@@ -50,7 +50,7 @@ const App = () => {
   useEffect(() => { getHomeData(); }, [city]);
 
   return (
-    <Box className={classes.relatedInfo}>
+    <Box className={classes.relatedInfo} id="scrollTarget">
       { homeInfo.length
         ? (
           <Box>

@@ -49,12 +49,18 @@ const styles = ({ spacing, palette, breakpoints }) => {
         left: '88%',
       },
       cities: {
-        // fontSize: 18,
+        textDecoration: 'none',
+        // color: 'inherit',
+        fontFamily: 'inherit',
       },
       cityList: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
+        paddingBottom: 100,
+      },
+      cityListAnchor: {
+        textDecoration: 'none',
       },
       relatedInfoContent: {
         maxWidth: 310,
@@ -76,6 +82,11 @@ const styles = ({ spacing, palette, breakpoints }) => {
         marginBottom: 30,
         position: 'relative',
       },
+      relatedInfo: {
+        padding: '10px 10% 0 10%',
+        position: 'relative',
+        backgroundColor: '#F7F7F7',
+      },
       relatedInfoliked: {
         filter: 'none',
         color: 'red',
@@ -93,12 +104,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
       relatedInfoPriceBox: {
         display: 'flex',
         alignItems: 'center',
-      },
-      relatedInfo: {
-        padding: '30px 5px',
-        position: 'relative',
-        backgroundColor: '#F7F7F7',
-        marginBottom: 30,
       },
       relatedInfoReviewsBox: {
         display: 'flex',
