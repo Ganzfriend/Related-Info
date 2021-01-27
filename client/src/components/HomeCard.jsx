@@ -20,7 +20,7 @@ const axios = require('axios');
 
 const useStyles = makeStyles(styles);
 
-const HomeCard = ({ home }) => {
+const HomeCard = ({ home, handleHomeCardClick }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
   const [liked, setLiked] = useState(false);
   const [ratings, setRatings] = useState({});
@@ -48,7 +48,9 @@ const HomeCard = ({ home }) => {
 
   return (
     <Card key={home._id} className={classes.relatedInfoCard}>
-      <CardActionArea>
+      <CardActionArea
+        onClick={() => handleHomeCardClick(home)}
+      >
         <CardMedia
           className={classes.relatedInfoMedia}
           image={placeholderImageURL}
