@@ -87,6 +87,12 @@ const styles = ({ spacing, palette, breakpoints }) => {
         position: 'relative',
         backgroundColor: '#F7F7F7',
       },
+      relatedInfoDialog: {
+        maxWidth: 500,
+      },
+      relatedInfoDialogTitle: {
+        // display: 'flex',
+      },
       relatedInfoliked: {
         filter: 'none',
         color: 'red',

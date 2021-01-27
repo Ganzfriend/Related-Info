@@ -18,6 +18,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeCard from './HomeCard';
+import DialogHomeContent from './DialogHomeContent';
 import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
@@ -25,7 +26,7 @@ const useStyles = makeStyles(styles);
 const Places = ({ homeInfo }) => {
   const classes = useStyles();
   const [selected, setSelected] = useState(null);
-  // const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const ButtonGroup = ({
     next, previous, goToSlide, ...rest
@@ -68,12 +69,12 @@ const Places = ({ homeInfo }) => {
 
   const handleHomeCardClick = (clickedHome) => {
     setSelected(clickedHome);
-    // setOpen(true);
+    setOpen(true);
   };
 
   const handleCardClose = () => {
+    setOpen(false);
     setSelected(null);
-    // setOpen(false);
   };
 
   return (
@@ -95,21 +96,13 @@ const Places = ({ homeInfo }) => {
         ))}
       </Carousel>
       {
-        selected
-          ? (
-            <Dialog open={!!selected} onClose={handleCardClose} className={classes.dialogCard}>
-              <DialogTitle>
-                A closer look at your home
-                <IconButton onClick={handleCardClose}>
-                  <CloseIcon />
-                </IconButton>
-              </DialogTitle>
-              <HomeCard
-                home={selected}
-              />
-            </Dialog>
-          )
-          : null
+        !!selected && (
+          <Dialog open={open} onClose={handleCardClose} className={classes.dialogCard}>
+            <DialogHomeContent
+              home={selected}
+            />
+          </Dialog>
+        )
       }
     </Box>
   );
