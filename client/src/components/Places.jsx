@@ -6,23 +6,31 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable-next-line import/extensions */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Box from '@material-ui/core/Box';
-import { IconButton } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeCard from './HomeCard';
+import DialogHomeContent from './DialogHomeContent';
 import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
 
 const Places = ({ homeInfo }) => {
   const classes = useStyles();
+  const [selected, setSelected] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
+  const ButtonGroup = ({
+    next, previous, goToSlide, ...rest
+  }) => {
     const { carouselState: { currentSlide } } = rest;
     return (
       <Box className={classes.carouselButtonGroup}>
@@ -59,22 +67,44 @@ const Places = ({ homeInfo }) => {
     },
   };
 
+  const handleHomeCardClick = (clickedHome) => {
+    setSelected(clickedHome);
+    setOpen(true);
+  };
+
+  const handleCardClose = () => {
+    setOpen(false);
+    setSelected(null);
+  };
+
   return (
-    <Carousel
-      containerClass={classes.homeSlider}
-      responsive={responsive}
-      infinite
-      renderButtonGroupOutside
-      arrows={false}
-      customButtonGroup={<ButtonGroup />}
-    >
-      { homeInfo.map((home) => (
-        <HomeCard
-          home={home}
-          key={home._id}
-        />
-      ))}
-    </Carousel>
+    <Box>
+      <Carousel
+        containerClass={classes.homeSlider}
+        responsive={responsive}
+        infinite
+        renderButtonGroupOutside
+        arrows={false}
+        customButtonGroup={<ButtonGroup />}
+      >
+        { homeInfo.map((home) => (
+          <HomeCard
+            home={home}
+            key={home._id}
+            handleHomeCardClick={handleHomeCardClick}
+          />
+        ))}
+      </Carousel>
+      {
+        !!selected && (
+          <Dialog open={open} onClose={handleCardClose} className={classes.dialogCard}>
+            <DialogHomeContent
+              home={selected}
+            />
+          </Dialog>
+        )
+      }
+    </Box>
   );
 };
 

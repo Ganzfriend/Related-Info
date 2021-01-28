@@ -4,8 +4,8 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../styles.js';
 
@@ -16,12 +16,11 @@ const CityList = ({ cities, setCity }) => {
   return (
     <Box className={classes.cityList}>
       { cities.map(city => (
-        <Typography key={city._id} className={classes.cities}>
-          <Button href="#" onClick={() => setCity(city.name)}>
+        <a href="#scrollTarget" className={classes.cityListAnchor} key={city._id} onClick={() => setCity(city.name)}>
+          <Button className={classes.cities}>
             {city.name}
           </Button>
-        </Typography>
-
+        </a>
       ))}
     </Box>
   );
