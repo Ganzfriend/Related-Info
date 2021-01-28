@@ -28,19 +28,19 @@ const App = () => {
   const classes = useStyles();
 
   const getActivityData = () => {
-    axios.get(`http://localhost:3000/activities/${city}`)
+    axios.get(`http://13.57.15.174:3000/activities/${city}`)
       .then((response) => setActivityInfo(response.data))
       .catch((err) => console.log(err));
   };
 
   const getCities = () => {
-    axios.get(`http://localhost:3000/cities`)
+    axios.get(`http://13.57.15.174:3000/cities`)
       .then((response) => setCities(response.data))
       .catch((err) => console.log(err));
   };
 
   const getHomeData = () => {
-    axios.get(`http://localhost:3000/homes/${city}`)
+    axios.get(`http://13.57.15.174:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .then(() => getActivityData())
       .then(() => getCities())
