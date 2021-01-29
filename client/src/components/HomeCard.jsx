@@ -40,7 +40,7 @@ const HomeCard = ({ home, handleHomeCardClick }) => {
 
   const handleHeartClick = (clickedHomeId) => {
     const newLiked = !liked;
-    axios.patch(`http://13.57.15.174:3000/homes/${clickedHomeId}`, { liked: newLiked })
+    axios.patch(`http://3.101.149.145:3000/homes/${clickedHomeId}`, { liked: newLiked })
       .then(data => console.log('the data is', data))
       .then(() => setLiked(!liked))
       .catch((err) => console.log(err));
