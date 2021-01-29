@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route, useParams } from 'react-router-dom';
 import Places from './Places';
 import Activities from './Activities';
 import CityList from './CityList';
@@ -26,6 +26,7 @@ const App = () => {
   const [activityInfo, setActivityInfo] = useState([]);
   const [cities, setCities] = useState([]);
   const classes = useStyles();
+  const { id } = useParams();
 
   const propertyLocations = {
     'Hollywood, CA': [1, 3, 6, 7, 18],
@@ -34,9 +35,9 @@ const App = () => {
     'Seattle, WA': [2, 5, 8, 9, 10],
   };
 
-  const findCityName = (id) => {
+  const findCityName = (paramsId) => {
     for (const key in propertyLocations) {
-      const isPresent = propertyLocations[key].find((num) => num === id);
+      const isPresent = propertyLocations[key].find((num) => num === paramsId);
       if (isPresent) {
         return key;
       }
@@ -63,7 +64,10 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { getHomeData(); }, [city]);
+  useEffect(() => {
+    setCity(findCityName(id));
+    getHomeData();
+  }, [id]);
 
   return (
     <HashRouter>
