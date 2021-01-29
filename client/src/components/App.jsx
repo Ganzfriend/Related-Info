@@ -15,7 +15,7 @@ const axios = require('axios');
 const useStyles = makeStyles(styles);
 
 const App = () => {
-  const [city, setCity] = useState('Seattle, WA');
+  const [city, setCity] = useState('');
   const [homeInfo, setHomeInfo] = useState([]);
   const [activityInfo, setActivityInfo] = useState([]);
   const [cities, setCities] = useState([]);
@@ -32,12 +32,10 @@ const App = () => {
   const findCityName = (paramsId) => {
     for (let key in propertyLocations) {
       let isPresent = propertyLocations[key].indexOf(parseInt(paramsId)) >= 0;
-      console.log('isPresent is: ', isPresent);
       if (isPresent) {
         return key;
       }
     }
-    console.log( 'the param id is: ', paramsId);
   };
 
   const getActivityData = () => {
@@ -62,40 +60,41 @@ const App = () => {
 
   useEffect(() => {
     setCity(findCityName(id));
-    getHomeData();
   }, [id]);
 
-  // useEffect(() => {
-  //   getHomeData();
-  // }, [city]);
+  useEffect(() => {
+    getHomeData();
+  }, [city]);
 
   return (
-    <Box className={classes.relatedInfo} id="scrollTarget">
-      { homeInfo.length
-        ? (
-          <Box>
-            <h2>More places to stay</h2>
-            <Places homeInfo={homeInfo} />
-          </Box>
-        )
-        : <CardSkeletons />}
-      { activityInfo.length
-        ? (
-          <Box>
-            <h2>Things to do nearby</h2>
-            <Activities activityInfo={activityInfo} />
-          </Box>
-        )
-        : <CardSkeletons />}
-      { cities.length
-        ? (
-          <Box>
-            <h2>Explore other options in another city</h2>
-            <CityList cities={cities} setCity={setCity} />
-          </Box>
-        )
-        : <CityListSkeletons />}
-    </Box>
+    <div>
+      <Box className={classes.relatedInfo} id="scrollTarget">
+        { homeInfo.length
+          ? (
+            <Box>
+              <h2>More places to stay</h2>
+              <Places homeInfo={homeInfo} />
+            </Box>
+          )
+          : <CardSkeletons />}
+        { activityInfo.length
+          ? (
+            <Box>
+              <h2>Things to do nearby</h2>
+              <Activities activityInfo={activityInfo} />
+            </Box>
+          )
+          : <CardSkeletons />}
+        { cities.length
+          ? (
+            <Box>
+              <h2>Explore other options in another city</h2>
+              <CityList cities={cities} setCity={setCity} />
+            </Box>
+          )
+          : <CityListSkeletons />}
+      </Box>
+    </div>
   );
 };
 
