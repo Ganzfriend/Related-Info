@@ -59,9 +59,6 @@ const styles = ({ spacing, palette, breakpoints }) => {
         justifyContent: 'space-around',
         paddingBottom: 100,
       },
-      cityListAnchor: {
-        textDecoration: 'none',
-      },
       relatedInfoContent: {
         maxWidth: 310,
         padding: 10,
