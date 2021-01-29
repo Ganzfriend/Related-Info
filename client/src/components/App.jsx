@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import Places from './Places';
 import Activities from './Activities';
 import CityList from './CityList';
@@ -20,12 +21,27 @@ const App = () => {
   so user can toggle between
   on click of city, we would call setCity on that value
   */
-  /* setCity(document.getElementById("app").value); */
   const [city, setCity] = useState('Seattle, WA');
   const [homeInfo, setHomeInfo] = useState([]);
   const [activityInfo, setActivityInfo] = useState([]);
   const [cities, setCities] = useState([]);
   const classes = useStyles();
+
+  const propertyLocations = {
+    'Hollywood, CA': [1, 3, 6, 7, 18],
+    'Austin, TX': [12, 13, 15, 17, 19],
+    'Oakland, CA': [4, 11, 14, 16, 20],
+    'Seattle, WA': [2, 5, 8, 9, 10],
+  };
+
+  const findCityName = (id) => {
+    for (const key in propertyLocations) {
+      const isPresent = propertyLocations[key].find((num) => num === id);
+      if (isPresent) {
+        return key;
+      }
+    }
+  };
 
   const getActivityData = () => {
     axios.get(`http://3.101.149.145:3000/activities/${city}`)
@@ -34,7 +50,7 @@ const App = () => {
   };
 
   const getCities = () => {
-    axios.get(`http://3.101.149.145:3000/cities`)
+    axios.get('http://3.101.149.145:3000/cities')
       .then((response) => setCities(response.data))
       .catch((err) => console.log(err));
   };
@@ -50,32 +66,38 @@ const App = () => {
   useEffect(() => { getHomeData(); }, [city]);
 
   return (
-    <Box className={classes.relatedInfo} id="scrollTarget">
-      { homeInfo.length
-        ? (
-          <Box>
-            <h2>More places to stay</h2>
-            <Places homeInfo={homeInfo} />
+    <HashRouter>
+      <Switch>
+        <Route path="/listing/:id">
+          <Box className={classes.relatedInfo} id="scrollTarget">
+            { homeInfo.length
+              ? (
+                <Box>
+                  <h2>More places to stay</h2>
+                  <Places homeInfo={homeInfo} />
+                </Box>
+              )
+              : <CardSkeletons />}
+            { activityInfo.length
+              ? (
+                <Box>
+                  <h2>Things to do nearby</h2>
+                  <Activities activityInfo={activityInfo} />
+                </Box>
+              )
+              : <CardSkeletons />}
+            { cities.length
+              ? (
+                <Box>
+                  <h2>Explore other options in another city</h2>
+                  <CityList cities={cities} setCity={setCity} />
+                </Box>
+              )
+              : <CityListSkeletons />}
           </Box>
-        )
-        : <CardSkeletons />}
-      { activityInfo.length
-        ? (
-          <Box>
-            <h2>Things to do nearby</h2>
-            <Activities activityInfo={activityInfo} />
-          </Box>
-        )
-        : <CardSkeletons />}
-      { cities.length
-        ? (
-          <Box>
-            <h2>Explore other options in another city</h2>
-            <CityList cities={cities} setCity={setCity} />
-          </Box>
-        )
-        : <CityListSkeletons />}
-    </Box>
+        </Route>
+      </Switch>
+    </HashRouter>
   );
 };
 
