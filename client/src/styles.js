@@ -88,10 +88,25 @@ const styles = ({ spacing, palette, breakpoints }) => {
         backgroundColor: '#F7F7F7',
       },
       relatedInfoDialog: {
-        maxWidth: 500,
+        width: 600,
+      },
+      relatedInfoDialogContent: {
+        display: 'flex',
+        justifyContent: 'center',
+      },
+      relatedInfoDialogMedia: {
+        width: 600,
+        height: 'auto',
+        overflow: 'hidden',
+        borderRadius: 10,
+      },
+      relatedInfoDialogMediaBox: {
+        maxHeight: 420,
+        overflow: 'hidden',
       },
       relatedInfoDialogTitle: {
-        // display: 'flex',
+        padding: 10,
+        fontSize: 30,
       },
       relatedInfoliked: {
         filter: 'none',
