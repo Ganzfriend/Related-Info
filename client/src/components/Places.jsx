@@ -15,7 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Draggable from 'react-draggable';
+// import Draggable from 'react-draggable';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeCard from './HomeCard';
@@ -24,11 +24,11 @@ import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
 
-const PaperComponent = (props) => (
-  <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
-    <Paper {...props} />
-  </Draggable>
-);
+// const PaperComponent = (props) => (
+//   <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
+//     <Paper {...props} />
+//   </Draggable>
+// );
 
 const Places = ({ homeInfo }) => {
   const classes = useStyles();
