@@ -14,7 +14,6 @@ import StarRateIcon from '@material-ui/icons/StarRate';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import MouseOverPopover from './MouseOverPopover';
 import styles from '../styles.js';
-// import getRatings from './getRatings.jsx';
 
 const axios = require('axios');
 
@@ -23,25 +22,16 @@ const useStyles = makeStyles(styles);
 const HomeCard = ({ home, handleHomeCardClick }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
   const [liked, setLiked] = useState(false);
-  // const [ratings, setRatings] = useState({});
+  const [image, setImage] = useState(null);
   const classes = useStyles();
 
-  /* once getRatings is fetching the data we need, we'll use these objects to set the
-  review count & rating value, rather than what's in my dummy data */
-  useEffect(() => {setLiked(home.liked)}, [home.liked]);
-
-  // useEffect(() => {
-  //   getRatings()
-  //     .then(result => {
-  //       setRatings(result);
-  //       console.log('result is', result);
-  //     });
-  // }, []);
+  useEffect(() => { setLiked(home.liked); }, [home.liked]);
+  useState(() => setImage(placeholderImageURL));
 
   const handleHeartClick = (clickedHomeId) => {
     const newLiked = !liked;
     axios.patch(`http://localhost:3000/homes/${clickedHomeId}`, { liked: newLiked })
-      .then(data => console.log('the data is', data))
+      .then((data) => console.log('the data is', data))
       .then(() => setLiked(!liked))
       .catch((err) => console.log(err));
   };
@@ -51,11 +41,11 @@ const HomeCard = ({ home, handleHomeCardClick }) => {
       <CardActionArea>
         <CardMedia
           className={classes.relatedInfoMedia}
-          image={placeholderImageURL}
+          image={image}
           title="Click to check out your new home!"
         >
           {home.superhost ? <Box className={classes.relatedInfoSuperhost}> SUPERHOST </Box> : '' }
-          <Box className={liked ? `${classes.relatedInfoHeart} ${classes.relatedInfoliked}` : classes.relatedInfoHeart}>
+          <Box className={liked ? `${classes.relatedInfoHeart} ${classes.relatedInfoLiked}` : classes.relatedInfoHeart}>
             <FavoriteTwoToneIcon
               onClick={() => { handleHeartClick(home._id); }}
             />

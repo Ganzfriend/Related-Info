@@ -31,7 +31,6 @@ const ActivityCard = ({ activity }) => {
   const handleHeartClick = (clickedActivityId) => {
     const newLiked = !liked;
     axios.patch(`http://localhost:3000/activities/${clickedActivityId}`, { liked: newLiked })
-      // .then(data => console.log('the data is', data))
       .then(() => setLiked(!liked))
       .catch((err) => console.log(err));
   };
@@ -44,7 +43,7 @@ const ActivityCard = ({ activity }) => {
           image={placeholderImageURL}
           title="Click to find out more about your next adventure!"
         >
-          <Box className={liked ? `${classes.relatedInfoHeart} ${classes.relatedInfoliked}` : classes.relatedInfoHeart}>
+          <Box className={liked ? `${classes.relatedInfoHeart} ${classes.relatedInfoLiked}` : classes.relatedInfoHeart}>
             <FavoriteTwoToneIcon
               onClick={() => { handleHeartClick(activity._id); }}
             />

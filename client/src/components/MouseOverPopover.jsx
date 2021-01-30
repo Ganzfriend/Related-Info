@@ -25,13 +25,9 @@ const MouseOverPopover = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handlePopoverOpen = (event) => setAnchorEl(event.currentTarget);
 
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
+  const handlePopoverClose = () => setAnchorEl(null);
 
   const open = Boolean(anchorEl);
 
