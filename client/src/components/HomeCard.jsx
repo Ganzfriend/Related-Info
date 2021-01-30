@@ -14,17 +14,29 @@ import StarRateIcon from '@material-ui/icons/StarRate';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import MouseOverPopover from './MouseOverPopover';
 import styles from '../styles.js';
+// import getRatings from './getRatings.jsx';
 
 const axios = require('axios');
 
 const useStyles = makeStyles(styles);
 
-const HomeCard = ({ home }) => {
+const HomeCard = ({ home, handleHomeCardClick }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
   const [liked, setLiked] = useState(false);
+  // const [ratings, setRatings] = useState({});
   const classes = useStyles();
 
-  useEffect(() => setLiked(home.liked), [home.liked]);
+  /* once getRatings is fetching the data we need, we'll use these objects to set the
+  review count & rating value, rather than what's in my dummy data */
+  useEffect(() => {setLiked(home.liked)}, [home.liked]);
+
+  // useEffect(() => {
+  //   getRatings()
+  //     .then(result => {
+  //       setRatings(result);
+  //       console.log('result is', result);
+  //     });
+  // }, []);
 
   const handleHeartClick = (clickedHomeId) => {
     const newLiked = !liked;
@@ -49,7 +61,10 @@ const HomeCard = ({ home }) => {
             />
           </Box>
         </CardMedia>
-        <Box className={classes.relatedInfoContent}>
+        <Box
+          className={classes.relatedInfoContent}
+          onClick={() => handleHomeCardClick(home)}
+        >
           <Box className={classes.relatedInfoReviewsBox}>
             <StarRateIcon style={{ color: 'red' }} />
             <Typography style={{ color: 'gray' }}>

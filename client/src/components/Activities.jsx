@@ -67,6 +67,7 @@ const Activities = ({ activityInfo }) => {
       renderButtonGroupOutside
       arrows={false}
       customButtonGroup={<ButtonGroup />}
+      focusOnSelect
     >
       { activityInfo.map((activity) => (
         <ActivityCard

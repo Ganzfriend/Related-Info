@@ -20,6 +20,7 @@ const App = () => {
   so user can toggle between
   on click of city, we would call setCity on that value
   */
+  /* setCity(document.getElementById("app").value); */
   const [city, setCity] = useState('Seattle, WA');
   const [homeInfo, setHomeInfo] = useState([]);
   const [activityInfo, setActivityInfo] = useState([]);
@@ -49,7 +50,7 @@ const App = () => {
   useEffect(() => { getHomeData(); }, [city]);
 
   return (
-    <Box className={classes.relatedInfo}>
+    <Box className={classes.relatedInfo} id="scrollTarget">
       { homeInfo.length
         ? (
           <Box>
