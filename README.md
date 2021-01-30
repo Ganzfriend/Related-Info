@@ -6,5 +6,5 @@
   * npm install
   * npm run react-dev
   * npm run seed (to connect to database and populate with dummy data)
-  * npm start (server will be running on localhost:3000)
-  * navigate to http://localhost:3000
+  * npm start (server will be running on 3.101.149.145:3000)
+  * navigate to http://3.101.149.145:3000

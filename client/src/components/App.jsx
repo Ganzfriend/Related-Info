@@ -39,19 +39,19 @@ const App = () => {
   };
 
   const getActivityData = () => {
-    axios.get(`http://localhost:3000/activities/${city}`)
+    axios.get(`http://3.101.149.145:3000/activities/${city}`)
       .then((response) => setActivityInfo(response.data))
       .catch((err) => console.log(err));
   };
 
   const getCities = () => {
-    axios.get('http://localhost:3000/cities')
+    axios.get('http://3.101.149.145:3000/cities')
       .then((response) => setCities(response.data))
       .catch((err) => console.log(err));
   };
 
   const getHomeData = () => {
-    axios.get(`http://localhost:3000/homes/${city}`)
+    axios.get(`http://3.101.149.145:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .then(() => getActivityData())
       .then(() => getCities())
@@ -64,7 +64,7 @@ const App = () => {
 
   return (
     <div>
-      <Box className={classes.relatedInfo} id="scrollTarget">
+      <Box className={classes.relatedInfo}>
         { homeInfo.length
           ? (
             <Box>
