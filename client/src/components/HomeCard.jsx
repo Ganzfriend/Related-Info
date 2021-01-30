@@ -14,7 +14,7 @@ import StarRateIcon from '@material-ui/icons/StarRate';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import MouseOverPopover from './MouseOverPopover';
 import styles from '../styles.js';
-import getRatings from './getRatings.jsx';
+// import getRatings from './getRatings.jsx';
 
 const axios = require('axios');
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles(styles);
 const HomeCard = ({ home, handleHomeCardClick }) => {
   const placeholderImageURL = generatePhotoPlaceholderURL(200, 200);
   const [liked, setLiked] = useState(false);
-  const [ratings, setRatings] = useState({});
+  // const [ratings, setRatings] = useState({});
   const classes = useStyles();
 
   /* once getRatings is fetching the data we need, we'll use these objects to set the
@@ -48,9 +48,7 @@ const HomeCard = ({ home, handleHomeCardClick }) => {
 
   return (
     <Card key={home._id} className={classes.relatedInfoCard}>
-      <CardActionArea
-        onClick={() => handleHomeCardClick(home)}
-      >
+      <CardActionArea>
         <CardMedia
           className={classes.relatedInfoMedia}
           image={placeholderImageURL}
@@ -63,7 +61,10 @@ const HomeCard = ({ home, handleHomeCardClick }) => {
             />
           </Box>
         </CardMedia>
-        <Box className={classes.relatedInfoContent}>
+        <Box
+          className={classes.relatedInfoContent}
+          onClick={() => handleHomeCardClick(home)}
+        >
           <Box className={classes.relatedInfoReviewsBox}>
             <StarRateIcon style={{ color: 'red' }} />
             <Typography style={{ color: 'gray' }}>
