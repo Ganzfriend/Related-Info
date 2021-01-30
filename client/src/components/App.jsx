@@ -30,8 +30,8 @@ const App = () => {
   };
 
   const findCityName = (paramsId) => {
-    for (let key in propertyLocations) {
-      let isPresent = propertyLocations[key].indexOf(parseInt(paramsId)) >= 0;
+    for (const key in propertyLocations) {
+      const isPresent = propertyLocations[key].indexOf(parseInt(paramsId)) >= 0;
       if (isPresent) {
         return key;
       }
@@ -58,13 +58,9 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    setCity(findCityName(id));
-  }, [id]);
+  useEffect(() => { setCity(findCityName(id)); }, [id]);
 
-  useEffect(() => {
-    getHomeData();
-  }, [city]);
+  useEffect(() => { getHomeData(); }, [city]);
 
   return (
     <div>
