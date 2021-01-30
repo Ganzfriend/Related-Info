@@ -51,6 +51,7 @@ const App = () => {
   };
 
   const getHomeData = () => {
+    city &&
     axios.get(`http://3.101.149.145:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .then(() => getActivityData())
@@ -58,9 +59,10 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { setCity(findCityName(id)); }, [id]);
-
-  useEffect(() => { getHomeData(); }, [city]);
+  useEffect(() => {
+    setCity(findCityName(id));
+    getHomeData();
+  }, [id, city]);
 
   return (
     <div>
