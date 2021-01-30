@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Router from './components/Router';
 import './styles.js';
 
-ReactDOM.render(<App />, document.getElementById('app4'));
+ReactDOM.render(<Router />, document.getElementById('app4'));

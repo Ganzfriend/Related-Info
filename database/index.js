@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// const uri = 'mongodb://database/relatedInfo';
 const uri = process.env.MONGODBURL || 'mongodb://localhost/relatedInfo';
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });

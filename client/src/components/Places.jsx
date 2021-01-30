@@ -14,12 +14,15 @@ import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Draggable from 'react-draggable';
 import Paper from '@material-ui/core/Paper';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Typography from '@material-ui/core/Typography';
+import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
+import StarRateIcon from '@material-ui/icons/StarRate';
 import HomeCard from './HomeCard';
-import DialogHomeContent from './DialogHomeContent';
 import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
@@ -28,9 +31,10 @@ const Places = ({ homeInfo }) => {
   const classes = useStyles();
   const [selected, setSelected] = useState(null);
   const [open, setOpen] = useState(false);
+  const [image, setImage] = useState(null);
 
   const PaperComponent = (props) => (
-    <Draggable handle="#draggable-dialog-content" cancel={'[class*="MuiDialogContent-root"]'}>
+    <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
       <Paper {...props} />
     </Draggable>
   );
@@ -76,6 +80,7 @@ const Places = ({ homeInfo }) => {
 
   const handleHomeCardClick = (clickedHome) => {
     setSelected(clickedHome);
+    setImage(generatePhotoPlaceholderURL(200, 200));
     setOpen(true);
   };
 
@@ -107,14 +112,37 @@ const Places = ({ homeInfo }) => {
           <Dialog
             open={open}
             onClose={handleCardClose}
-            className={classes.dialogCard}
+            className={classes.relatedInfoDialog}
             PaperComponent={PaperComponent}
-            aria-labelledby="draggable-dialog-content"
+            aria-labelledby="draggable-dialog-title"
           >
-            <DialogContent style={{ cursor: 'move' }} id="draggable-dialog-content">
-              <DialogHomeContent
-                home={selected}
-              />
+            <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+              <Typography
+                className={classes.relatedInfoDialogTitle}
+              >
+                {selected.description}
+              </Typography>
+            </DialogTitle>
+            <DialogContent>
+              <Box key={selected._id}>
+                <Box className={classes.relatedInfoDialogContent}>
+                  <StarRateIcon style={{ color: 'red' }} />
+                  <Typography style={{ color: 'gray' }}>
+                    {selected.reviews > 0 ? `${selected.reviews} reviews` : 'New'}
+                  </Typography>
+                  <Typography className={classes.relatedInfoBullet}> • </Typography>
+                  <Typography> {selected.city} </Typography>
+                </Box>
+                <Box className={classes.relatedInfoDialogMediaBox}>
+                  <img
+                    className={classes.relatedInfoDialogMedia}
+                    src={image}
+                    alt="Here's an upclose look"
+                    height="420px"
+                    width="650px"
+                  />
+                </Box>
+              </Box>
             </DialogContent>
           </Dialog>
         )
