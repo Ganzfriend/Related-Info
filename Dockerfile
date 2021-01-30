@@ -2,7 +2,7 @@ FROM node:15.7.0
 
 WORKDIR /fec/relatedInfo
 
-ENV MONGODBURL='mongodb://database:27017/relatedInfo'
+ENV MONGODBURL='mongodb://database/relatedInfo'
 
 COPY . .
 
