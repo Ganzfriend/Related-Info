@@ -51,6 +51,7 @@ const App = () => {
   };
 
   const getHomeData = () => {
+    city &&
     axios.get(`http://localhost:3000/homes/${city}`)
       .then((response) => setHomeInfo(response.data))
       .then(() => getActivityData())
@@ -58,13 +59,14 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { setCity(findCityName(id)); }, [id]);
-
-  useEffect(() => { getHomeData(); }, [city]);
+  useEffect(() => {
+    setCity(findCityName(id));
+    getHomeData();
+  }, [id, city]);
 
   return (
     <div>
-      <Box className={classes.relatedInfo} id="scrollTarget">
+      <Box className={classes.relatedInfo}>
         { homeInfo.length
           ? (
             <Box>
