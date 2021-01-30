@@ -6,16 +6,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable-next-line import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-// import Draggable from 'react-draggable';
+import DialogContent from '@material-ui/core/DialogContent';
+import Draggable from 'react-draggable';
+import Paper from '@material-ui/core/Paper';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeCard from './HomeCard';
@@ -24,16 +24,16 @@ import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
 
-// const PaperComponent = (props) => (
-//   <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
-//     <Paper {...props} />
-//   </Draggable>
-// );
-
 const Places = ({ homeInfo }) => {
   const classes = useStyles();
   const [selected, setSelected] = useState(null);
   const [open, setOpen] = useState(false);
+
+  const PaperComponent = (props) => (
+    <Draggable handle="#draggable-dialog-content" cancel={'[class*="MuiDialogContent-root"]'}>
+      <Paper {...props} />
+    </Draggable>
+  );
 
   const ButtonGroup = ({
     next, previous, goToSlide, ...rest
@@ -108,11 +108,14 @@ const Places = ({ homeInfo }) => {
             open={open}
             onClose={handleCardClose}
             className={classes.dialogCard}
-            aria-labelledby="draggable-dialog-title"
+            PaperComponent={PaperComponent}
+            aria-labelledby="draggable-dialog-content"
           >
-            <DialogHomeContent
-              home={selected}
-            />
+            <DialogContent style={{ cursor: 'move' }} id="draggable-dialog-content">
+              <DialogHomeContent
+                home={selected}
+              />
+            </DialogContent>
           </Dialog>
         )
       }

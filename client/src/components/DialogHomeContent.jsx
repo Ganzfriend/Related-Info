@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { generatePhotoPlaceholderURL } from 'react-placeholder-image';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import StarRateIcon from '@material-ui/icons/StarRate';
-import MouseOverPopover from './MouseOverPopover';
 import styles from '../styles.js';
 
 const useStyles = makeStyles(styles);
