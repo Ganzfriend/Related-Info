@@ -4,6 +4,7 @@
   "main": "index.jsx",
   "scripts": {
     "react-dev": "webpack --mode development -w",
+    "watch": "webpack --mode production",
     "seed": "node database/seed.js",
     "start": "nodemon server/index.js",
     "test": "jest"
