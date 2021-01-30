@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:15.7.0
 
 WORKDIR /fec/relatedInfo
 
