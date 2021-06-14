@@ -39,24 +39,25 @@ const App = () => {
   };
 
   const getActivityData = () => {
-    axios.get(`http://3.101.149.145:3000/activities/${city}`)
+    axios.get(`/activities/${city}`)
       .then((response) => setActivityInfo(response.data))
       .catch((err) => console.log(err));
   };
 
   const getCities = () => {
-    axios.get('http://3.101.149.145:3000/cities')
+    axios.get('/cities')
       .then((response) => setCities(response.data))
       .catch((err) => console.log(err));
   };
 
   const getHomeData = () => {
-    city &&
-    axios.get(`http://3.101.149.145:3000/homes/${city}`)
-      .then((response) => setHomeInfo(response.data))
-      .then(() => getActivityData())
-      .then(() => getCities())
-      .catch((err) => console.log(err));
+    if (city) {
+      axios.get(`/homes/${city}`)
+        .then((response) => setHomeInfo(response.data))
+        .then(() => getActivityData())
+        .then(() => getCities())
+        .catch((err) => console.log(err));
+    }
   };
 
   useEffect(() => {

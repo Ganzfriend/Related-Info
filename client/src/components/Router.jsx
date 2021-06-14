@@ -3,6 +3,7 @@ import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import App from './App';
 
+// TODO refactor this back to a functional component
 class Router extends React.Component {
   constructor(props) {
     super(props);

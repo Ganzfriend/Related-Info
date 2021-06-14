@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-// const uri = 'mongodb://database/relatedInfo';
-const uri = process.env.MONGODBURL || 'mongodb://localhost/relatedInfo';
+// const uri = process.env.MONGODB_URI;
+const uri = 'mongodb+srv://mongo:mongo@destination-capstone.8oji2.mongodb.net/destination-capstone?retryWrites=true&w=majority';
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -45,4 +45,4 @@ const citySchema = new mongoose.Schema({
 
 const City = mongoose.model('City', citySchema);
 
-module.exports = {City, Home, Activity};
+module.exports = { City, Home, Activity };

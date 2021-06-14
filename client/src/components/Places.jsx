@@ -39,9 +39,7 @@ const Places = ({ homeInfo }) => {
     </Draggable>
   );
 
-  const ButtonGroup = ({
-    next, previous, goToSlide, ...rest
-  }) => {
+  const ButtonGroup = ({next, previous, goToSlide, ...rest}) => {
     const { carouselState: { currentSlide } } = rest;
     return (
       <Box className={classes.carouselButtonGroup}>

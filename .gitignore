@@ -1,3 +1,4 @@
 node_modules
-dist/bundle.js
+dist/related-info-bundle.js
 config.js
+.env

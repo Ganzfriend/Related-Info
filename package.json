@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.jsx",
   "scripts": {
-    "react-dev": "webpack --mode development -w",
-    "watch": "webpack --mode production",
+    "watch": "webpack --mode development -w",
+    "build": "webpack --mode production",
     "seed": "node database/seed.js",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "test": "jest"
   },
   "author": "Ganzfriend",
@@ -43,10 +43,10 @@
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-react": "^7.12.10",
     "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
     "@testing-library/dom": "^7.29.4",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",

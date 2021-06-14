@@ -8,7 +8,7 @@ const cors = require('cors');
 const { City, Home, Activity } = require('../database/index.js');
 
 const app = express();
-const PORT = 3000;
+const { PORT } = process.env;
 
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.use(express.json());
