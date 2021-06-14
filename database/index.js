@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-// const uri = process.env.MONGODB_URI;
-const uri = 'mongodb+srv://mongo:mongo@destination-capstone.8oji2.mongodb.net/destination-capstone?retryWrites=true&w=majority';
+const uri = process.env.MONGODB_URI;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
